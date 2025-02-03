@@ -72,58 +72,58 @@ const ProjectsSlider = () => {
       `${img}`,
       ]
     },
-    {
-      year: '2024',
-      title: 'Vaman',
-      description: 'As part of our space club, PSIT Vyomnauts, we are thrilled to embark on an exciting project todevelop Vaman, our version of the renowned Cheetah Robot. Inspired by the pioneering workdone by MIT, Vaman is designed to exhibit agility, speed, and dynamic movements akin to a realcheetah, making it a formidable engineering and robotics challenge. Through this project, we aimto create a cutting-edge robotic marvel that stands as a unique innovation from our college.',
-      briefDescription: 'By developing Vaman as a college project, we seek to enhance our institution’s reputation in robotics and motivate future students to dream big and undertake ambitious technologicalprojects. This bold initiative represents our leap into the world of advanced robotics, setting a benchmark for innovation and excellence.',
-      status: 'In Development',
-      metrics: {
-        altitude: '1200m',
-        duration: '60min',
-        dataPoints: '5K'
-      },
-      video : `${demo1}`,
-      images: [
-       `${img2}`,
-       `${img2}`,
-       `${img2}`,
-      ]
-    },
-    {
-      year: '2024',
-      title: 'HoverCraft',
-      description: 'As part of our space club, PSIT Vyomnauts, we are embarking on an exciting project to developa hovercraft, named Airavat. This innovative vehicle is designed to glide smoothly oversurfaces, powered by air cushion technology, making it a versatile engineering and robotics challenge. Inspired by the advancements in hovercraft design, we aim to create our own uniqueversion, showcasing the ingenuity and technical expertise of our college.',
-      briefDescription: 'By developing Airavat as a college project, we aim to elevate our institution reputation ininnovative engineering and inspire future students to undertake bold and ambitious technological initiatives. It’s a pioneering step that signifies our entry into the realm of advanced hovercraft technology.',
-      metrics: {
-        // altitude: '1200m',
-        // duration: '60min',
-        // dataPoints: '5K'
-      },
-      video : `${demo1}`,
-      images: [
-       `${img2}`,
-       `${img2}`,
-       `${img2}`,
-      ]
-    },
-    {
-      year: '2025',
-      title: 'ISRO Robotics Challenge – URSC 2025',
-      description: 'PSIT Vyomnauts is thrilled to participate in the ISRO Robotics Challenge - URSC 2025,hosted by the U R Rao Satellite Centre (URSC), ISRO. This competition invites teams fromacross the nation to develop innovative robotic solutions tailored for space exploration andsatellite missions. As a passionate group of aspiring space scientists and engineers, we are proudto represent our institution in this prestigious event.',
-      briefDescription: 'By participating in the ISRO Robotics Challenge, PSIT Vyomnauts aims to make a meaningfulimpact while gaining invaluable experience and exposure in the field of space robotics. We are excited to collaborate, innovate, and strive for excellence as we work towards making our markin this groundbreaking competition.',
-      metrics: {
-        // altitude: '1200m',
-        // duration: '60min',
-        // dataPoints: '5K'
-      },
-      video : `${demo1}`,
-      images: [
-       `${img2}`,
-       `${img2}`,
-       `${img2}`,
-      ]
-    },
+    // {
+    //   year: '2024',
+    //   title: 'Vaman',
+    //   description: 'As part of our space club, PSIT Vyomnauts, we are thrilled to embark on an exciting project todevelop Vaman, our version of the renowned Cheetah Robot. Inspired by the pioneering workdone by MIT, Vaman is designed to exhibit agility, speed, and dynamic movements akin to a realcheetah, making it a formidable engineering and robotics challenge. Through this project, we aimto create a cutting-edge robotic marvel that stands as a unique innovation from our college.',
+    //   briefDescription: 'By developing Vaman as a college project, we seek to enhance our institution’s reputation in robotics and motivate future students to dream big and undertake ambitious technologicalprojects. This bold initiative represents our leap into the world of advanced robotics, setting a benchmark for innovation and excellence.',
+    //   status: 'In Development',
+    //   metrics: {
+    //     altitude: '1200m',
+    //     duration: '60min',
+    //     dataPoints: '5K'
+    //   },
+    //   video : `${demo1}`,
+    //   images: [
+    //    `${img2}`,
+    //    `${img2}`,
+    //    `${img2}`,
+    //   ]
+    // },
+    // {
+    //   year: '2024',
+    //   title: 'HoverCraft',
+    //   description: 'As part of our space club, PSIT Vyomnauts, we are embarking on an exciting project to developa hovercraft, named Airavat. This innovative vehicle is designed to glide smoothly oversurfaces, powered by air cushion technology, making it a versatile engineering and robotics challenge. Inspired by the advancements in hovercraft design, we aim to create our own uniqueversion, showcasing the ingenuity and technical expertise of our college.',
+    //   briefDescription: 'By developing Airavat as a college project, we aim to elevate our institution reputation ininnovative engineering and inspire future students to undertake bold and ambitious technological initiatives. It’s a pioneering step that signifies our entry into the realm of advanced hovercraft technology.',
+    //   metrics: {
+    //     // altitude: '1200m',
+    //     // duration: '60min',
+    //     // dataPoints: '5K'
+    //   },
+    //   video : `${demo1}`,
+    //   images: [
+    //    `${img2}`,
+    //    `${img2}`,
+    //    `${img2}`,
+    //   ]
+    // },
+    // {
+    //   year: '2025',
+    //   title: 'ISRO Robotics Challenge – URSC 2025',
+    //   description: 'PSIT Vyomnauts is thrilled to participate in the ISRO Robotics Challenge - URSC 2025,hosted by the U R Rao Satellite Centre (URSC), ISRO. This competition invites teams fromacross the nation to develop innovative robotic solutions tailored for space exploration andsatellite missions. As a passionate group of aspiring space scientists and engineers, we are proudto represent our institution in this prestigious event.',
+    //   briefDescription: 'By participating in the ISRO Robotics Challenge, PSIT Vyomnauts aims to make a meaningfulimpact while gaining invaluable experience and exposure in the field of space robotics. We are excited to collaborate, innovate, and strive for excellence as we work towards making our markin this groundbreaking competition.',
+    //   metrics: {
+    //     // altitude: '1200m',
+    //     // duration: '60min',
+    //     // dataPoints: '5K'
+    //   },
+    //   video : `${demo1}`,
+    //   images: [
+    //    `${img2}`,
+    //    `${img2}`,
+    //    `${img2}`,
+    //   ]
+    // },
   ];
 
   const closeCarousel = () => {
