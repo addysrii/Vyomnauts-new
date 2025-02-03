@@ -1,0 +1,18 @@
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes twinkle-slow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+  }
+  
+  .animate-twinkle {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  
+  .animate-twinkle-slow {
+    animation: twinkle-slow 6s ease-in-out infinite;
+  }
+  
