@@ -69,7 +69,7 @@ const LandingPage = () => {
               <div 
                 className="absolute inset-0 w-full h-full bg-cover bg-center"
                 style={{
-                  backgroundImage: `url(${img2})`,
+                  backgroundImage: `url(https://res.cloudinary.com/dnnl72vrp/image/upload/v1738686682/space2_yl8bj8.jpg)`,
                   opacity: 0.3,
                   zIndex: 1
                 }}
