@@ -38,7 +38,7 @@ const ProjectsSlider = () => {
         duration: '45min',
         dataPoints: '2.5K'
       },
-      video : demo1,
+      video : `url(https://res.cloudinary.com/dnnl72vrp/video/upload/v1738687190/atomic2_fncio3.mp4)`,
       images: [
         `${img1}`,
         `${img1}`,
@@ -65,7 +65,7 @@ const ProjectsSlider = () => {
       briefDescription: 'Next-generation CanSat featuring enhanced sensors, improved telemetry, and advanced recovery systems.',
       status: 'In Development',
 
-      video : demo2,
+      video : `url(https://res.cloudinary.com/dnnl72vrp/video/upload/v1738687215/cansat_showcase12345_fc2v5r.mp4)`,
       images: [
         `${img}`,
         `${img}`,
