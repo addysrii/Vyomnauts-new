@@ -458,9 +458,9 @@ const SpaceClubLanding = () => {
 
         {/* Orbiting Bodies */}
         <CelestialBody type="moon" size={12} orbitRadius={150} speed={0.3} delay={180} />
-        <CelestialBody type="earth" size={16} orbitRadius={250} speed={0.2} delay={0} />
-        <CelestialBody type="mars" size={16} orbitRadius={350} speed={0.15} delay={120} />
-        <CelestialBody type="gas" size={20} orbitRadius={450} speed={0.1} delay={240} />
+        <CelestialBody type="earth" size={12} orbitRadius={250} speed={0.2} delay={0} />
+        <CelestialBody type="mars" size={12} orbitRadius={350} speed={0.15} delay={120} />
+        <CelestialBody type="gas" size={12} orbitRadius={450} speed={0.1} delay={240} />
       </div>
 
       <Navbar />
