@@ -21,22 +21,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/10 backdrop-blur-lg shadow-lg' : 'bg-transparent'
-      }`}
-    >
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled ? 'bg-black/90 backdrop-blur-lg shadow-yellow-400/10 shadow-lg' : 'bg-transparent'
+    }`}>
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo/Brand */}
           <Link 
             to="/" 
-            className="text-2xl font-bold text-white flex items-center space-x-2"
+            className="text-2xl font-bold text-yellow-400 flex items-center space-x-2"
             aria-label="Home"
           >
             <img src={logo} alt="Vyomnauts Logo" className="h-8 w-8" />
-            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              Vyomnauts
+            <span className="text-yellow-400">
+              PSIT Vyomnauts
             </span>
           </Link>
 
@@ -47,16 +45,16 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link to={'/join'}>
-            <button 
-              className="px-4 py-2 text-white hover:text-blue-400 transition-colors"
-              aria-label="Join Us"
-            >
-              Join Us
-            </button>
+            <Link to="/join">
+              <button 
+                className="px-4 py-2 text-yellow-400 hover:text-yellow-300 transition-colors"
+                aria-label="Join Us"
+              >
+                Join Us
+              </button>
             </Link>
             <button 
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-colors"
               aria-label="Sponsor Us"
             >
               Sponsor Us
@@ -66,7 +64,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden text-white focus:outline-none"
+            className="lg:hidden text-yellow-400 focus:outline-none"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
@@ -78,24 +76,22 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div
-          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isOpen
-              ? 'max-h-screen opacity-100'
-              : 'max-h-0 opacity-0'
-          }`}
-        >
+        <div className={`lg:hidden bg-black transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}>
           <div className="pt-4 pb-6 space-y-4">
             <MobileNavLinks />
-            <div className="flex flex-col space-y-4 pt-4 border-t border-white/10">
+            <div className="flex flex-col space-y-4 pt-4 border-t border-yellow-400/20">
+              <Link to={'/join'}>
               <button 
-                className="px-4 py-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+                className="px-4 py-2 text-yellow-400 hover:bg-yellow-400/10 rounded-lg transition-colors"
                 aria-label="Join Us"
               >
                 Join Us
               </button>
+              </Link>
               <button 
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-colors"
                 aria-label="Sponsor Us"
               >
                 Sponsor Us
@@ -107,7 +103,7 @@ const Navbar = () => {
     </nav>
   );
 };
-
+          
 const NavLinks = () => (
   <ul className="flex items-center space-x-8">
     <NavItem to="/" text="Home" />
@@ -136,10 +132,10 @@ const NavItem = ({ to, text }) => (
   <li>
     <Link
       to={to}
-      className="text-white hover:text-blue-400 transition-colors relative group py-2"
+      className="text-yellow-400 hover:text-yellow-300 transition-colors relative group py-2"
     >
       {text}
-      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
     </Link>
   </li>
 );
@@ -150,7 +146,7 @@ const NavDropdown = ({ text, children }) => {
   return (
     <li className="relative group">
       <button
-        className="text-white hover:text-blue-400 transition-colors flex items-center space-x-1 py-2"
+        className="text-yellow-400 hover:text-yellow-300 transition-colors flex items-center space-x-1 py-2"
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         aria-haspopup="true"
@@ -160,7 +156,7 @@ const NavDropdown = ({ text, children }) => {
         <ChevronDown className="w-4 h-4" />
       </button>
       <div
-        className={`absolute top-full left-0 w-48 py-2 bg-black/90 backdrop-blur-lg rounded-lg shadow-xl transition-all duration-200 ${
+        className={`absolute top-full left-0 w-48 py-2 bg-black border border-yellow-400/20 backdrop-blur-lg rounded-lg shadow-xl transition-all duration-200 ${
           isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
         }`}
         onMouseEnter={() => setIsOpen(true)}
@@ -176,7 +172,7 @@ const NavDropdown = ({ text, children }) => {
 const DropdownItem = ({ to, text }) => (
   <Link
     to={to}
-    className="block px-4 py-2 text-white hover:bg-blue-600/50 transition-colors"
+    className="block px-4 py-2 text-yellow-400 hover:bg-yellow-400/10 transition-colors"
     role="menuitem"
   >
     {text}
@@ -187,7 +183,7 @@ const MobileNavItem = ({ to, text }) => (
   <li>
     <Link
       to={to}
-      className="block text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors"
+      className="block text-yellow-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
     >
       {text}
     </Link>
@@ -200,7 +196,7 @@ const MobileDropdown = ({ text, children }) => {
   return (
     <li>
       <button
-        className="w-full flex items-center justify-between text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors"
+        className="w-full flex items-center justify-between text-yellow-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -224,7 +220,7 @@ const MobileDropdown = ({ text, children }) => {
 const MobileDropdownItem = ({ to, text }) => (
   <Link
     to={to}
-    className="block text-white hover:bg-white/10 px-4 py-2 rounded-lg transition-colors"
+    className="block text-yellow-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
   >
     {text}
   </Link>

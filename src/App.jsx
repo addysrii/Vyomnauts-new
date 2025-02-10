@@ -6,7 +6,9 @@ import TeamPage from './AboutUs';
 import ProjectSlider from './BackgroundSlider';
 import BlogListingPage from './Blogs';
 import EventsPage from './OurEvent';
-import AboutUsPage from './NewAboutUs';
+import AboutUsPage from './NewAboutUs'
+import AdminLogin from './AdminDashboars';
+import AdminPublishing from './AdminDash';
 import { JoinUsPage } from './JoinUs';
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/join" element={<JoinUsPage />} />
+        <Route path="/adminlogin" element={<AdminLogin/>} />
+        <Route path="/admindash" element={<AdminPublishing />} />
       </Routes>
     </>
   );

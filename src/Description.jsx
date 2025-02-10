@@ -1,62 +1,106 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Rocket, Shield, Cpu, Radio, Users, Star } from 'lucide-react';
 
-const Description = () => {
+const VerticalSpaceCards = () => {
   return (
-    <div className="relative w-full min-h-screen bg-cover bg-center bg-fixed py-20" style={{ backgroundImage: 'url("/your-bg-image.jpg")' }}>
-      <div className="absolute inset-0 " /> 
-      
-      <motion.div 
-        className="max-w-7xl mx-auto px-6 relative"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="bg-slate-950/60 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-          <div className="p-8 lg:p-12">
-            <motion.h1 
-              className="text-4xl lg:text-6xl font-bold text-transparent bg-clip-text bg-yellow-400 text-center mb-8"
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Vyomnauts: Explorers of the Cosmos
-            </motion.h1>
+    <div className="relative w-full min-h-screen py-20 px-4">
+      {/* Animated stars background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute w-1 h-1 bg-yellow-500 rounded-full animate-pulse" style={{top: '10%', left: '20%'}}/>
+        <div className="absolute w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{top: '30%', left: '80%'}}/>
+        <div className="absolute w-1 h-1 bg-yellow-500 rounded-full animate-pulse" style={{top: '70%', left: '40%'}}/>
+        <div className="absolute w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{top: '50%', left: '90%'}}/>
+      </div>
 
-            <motion.div 
-              className="space-y-6 text-gray-200"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <p className="text-xl lg:text-2xl leading-relaxed">
-                Welcome to PSIT Vyomnauts, where curiosity meets the cosmos. We are more than just a space club – we are a community of dreamers, innovators, and future space pioneers.
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-8 mt-8">
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-bold text-purple-400">Our Mission</h2>
-                  <p className="text-lg">
-                    To ignite passion for space exploration, foster innovation in aerospace technology, and create the next generation of space scientists and engineers.
-                  </p>
-                </div>
+      <div className="max-w-7xl mx-auto space-y-12 relative">
+        {/* Header Section */}
+        <div className="text-center space-y-6">
+          <div className="inline-block">
+            <h2 className="text-5xl font-bold text-yellow-500">
+              PSIT Vyomnauts
+            </h2>
+            <div className="h-1 bg-yellow-500 rounded-full mt-2" />
+          </div>
+          <p className="text-xl text-yellow-500/90 max-w-3xl mx-auto leading-relaxed">
+            PSIT Vyomnauts Club is a hub for space enthusiasts, fostering innovation in aerospace, defense, robotics, and space science education through hands-on projects, research, and national and international competitions.
+          </p>
+        </div>
 
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-bold text-pink-400">What We Offer</h2>
-                  <ul className="text-lg space-y-2">
-                    <li>🔭 Advanced astronomical observations</li>
-                    <li>🚀 Hands-on rocketry workshops</li>
-                    <li>💫 Space science symposiums</li>
-                    <li>🛰️ Satellite tracking projects</li>
-                  </ul>
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Domains Card - Spans 2 columns */}
+          <div className="lg:col-span-2 group">
+            <div className="h-full bg-black border-2 border-yellow-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:border-yellow-500">
+              <div className="relative">
+                <h2 className="text-3xl font-bold text-yellow-500 mb-8 flex items-center gap-3">
+                  <Rocket className="w-8 h-8" />
+                  Our Domains
+                </h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {[
+                    {
+                      icon: <Rocket className="w-8 h-8" />,
+                      title: "Aerospace",
+                      desc: "Rockets, CubeSats, UAVs, and propulsion systems."
+                    },
+                    {
+                      icon: <Shield className="w-8 h-8" />,
+                      title: "Defense",
+                      desc: "Surveillance, navigation, and advanced strategic technologies."
+                    },
+                    {
+                      icon: <Cpu className="w-8 h-8" />,
+                      title: "Robotics",
+                      desc: "AI-driven drones, autonomous systems, and industrial robotics."
+                    },
+                    {
+                      icon: <Radio className="w-8 h-8" />,
+                      title: "Space Science & Education",
+                      desc: "Workshops, research, and awareness programs."
+                    }
+                  ].map((domain, i) => (
+                    <div key={i} className="group/item hover:bg-yellow-500/10 p-4 rounded-xl transition-all duration-300">
+                      <div className="text-yellow-500 mb-3 group-hover/item:scale-110 transition-transform duration-300">
+                        {domain.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-yellow-500 mb-2">{domain.title}</h3>
+                      <p className="text-yellow-500/90">{domain.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </div>
+
+          {/* Why Choose Us Card */}
+          <div className="group">
+            <div className="h-full bg-black border-2 border-yellow-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:border-yellow-500">
+              <h2 className="text-3xl font-bold text-yellow-500 mb-8 flex items-center gap-3">
+                <Star className="w-8 h-8" />
+                Why Choose Us?
+              </h2>
+              <ul className="space-y-6">
+                {[
+                  { icon: <Users className="w-6 h-6" />, text: "Mentorship from industry experts and academicians." },
+                  { icon: <Rocket className="w-6 h-6" />, text: "Hands-on experience in real-world space and defense projects." },
+                  { icon: <Star className="w-6 h-6" />, text: "Opportunities to participate in top competitions." },
+                  { icon: <Cpu className="w-6 h-6" />, text: "Strong focus on innovation and research." },
+                  { icon: <Shield className="w-6 h-6" />, text: "Contribution to India's space ecosystem." }
+                ].map((item, i) => (
+                  <li key={i} className="flex gap-4 items-start group/item hover:bg-yellow-500/10 p-3 rounded-xl transition-all duration-300">
+                    <span className="text-yellow-500 group-hover/item:scale-110 transition-transform duration-300">
+                      {item.icon}
+                    </span>
+                    <span className="text-yellow-500/90">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
 
-export default Description;
+export default VerticalSpaceCards;
