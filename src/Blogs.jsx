@@ -70,7 +70,7 @@ Harnessing solar wind as a free energy source for space applications is a promis
     },
     {
       id: 2,
-      title: "Exploring the Fermi Paradox: The Quietness of the Cosmos By Mohd. Faiz  ",
+      title: "Exploring the Fermi Paradox: The Quietness of the Cosmos - By Mohd. Faiz  ",
       excerpt: "Explore the enigmatic universe of black holes. From their formation to their impact on space-time, uncover the mysteries that make these celestial objects so fascinating",
       content: `The universe is grand, with an unfathomable number of galaxies, each hosting billions of stars and potentially even more planets. The whim that Earth is the sole cradle of intelligent beings feels more and more improbable.
     
@@ -117,7 +117,7 @@ Harnessing solar wind as a free energy source for space applications is a promis
     
     {
       id: 3,
-      title: "Methane Fuel: The Next Generation of Rocket Propulsion By Harsh Vishwakarma",
+      title: "Methane Fuel: The Next Generation of Rocket Propulsion - By Harsh Vishwakarma",
       excerpt: "Methane is revolutionizing rocket propulsion, offering high energy efficiency, cleaner combustion, and cost-effectiveness. Unlike traditional fuels like hydrogen and RP-1, methane enables reusable rockets with minimal maintenance and can even be produced on Mars using the Sabatier process. This makes it a game-changer for deep-space exploration and interplanetary colonization.",
       content: `**Methane Fuel: The Next Generation of Rocket Propulsion**
 
