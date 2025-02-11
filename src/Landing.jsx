@@ -695,9 +695,9 @@ const ProjectCountdown = () => {
 
   const projects = [
     {
-      name: "Mars Mission Launch",
-      description: "Join us for the historic launch of our next-generation Mars exploration mission",
-      date: new Date(2025,3,18),
+ name: "Rocketry India 2025",
+      description: "Experience our next-generation Rocket 'Trishul' designed to launch on 18th April 2025",
+      date: new Date(2025, 3, 18 ),
       image: `${img}`
     }
   ];
