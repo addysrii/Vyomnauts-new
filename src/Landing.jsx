@@ -566,8 +566,8 @@ import {
 import Navbar from './Navbar';
 import VerticalSpaceCards from './Description';
 import Footer from './Footer';
-import img from "./assets/trishul2.png"
-
+import img1 from "./assets/trishul2.png"
+import img from "./assets/trishul-1.png"
 const StarsBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -695,9 +695,9 @@ const ProjectCountdown = () => {
 
   const projects = [
     {
-      name: "Rocketry India 2025",
-    description: "Experience our next-generation Rocket 'Trishul' set to launch on 18th April 2025",
-     date: new Date(2025, 3, 18 ),
+      name: "Mars Mission Launch",
+      description: "Join us for the historic launch of our next-generation Mars exploration mission",
+      date: new Date(2025,3,18),
       image: `${img}`
     }
   ];
@@ -760,7 +760,7 @@ const ProjectCountdown = () => {
             <img
               src={projects[0].image}
               alt={projects[0].name}
-              className="relative rounded-xl w-full h-[400px] sm:h-[550px] lg:h-[650px] 
+              className="relative rounded-xl w-full h-[200px] sm:h-[200px] lg:h-[250px]
                         transform group-hover:scale-105 transition-transform duration-500"
             />
           </div>
