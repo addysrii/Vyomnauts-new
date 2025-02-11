@@ -9,7 +9,7 @@ const VerticalMentorsList = () => {
     {
       id: 1,
       name: "Dr. Raghvendra Singh",
-      title: "Dean Academics",
+      title: "Director Academics",
       expertise: "Astrophysics & Space Exploration",
       background: "Dr. Raghvendra Singh, the Director of Academics at Pranveer Singh Institute of Technology (PSIT), is an esteemed mentor for our space club. With expertise in communication and antenna technology, he has been instrumental in guiding students through various national and international competitions in space and robotics. Under his mentorship, students have successfully engaged in innovative projects, advancing their technical knowledge and problem-solving skills.",
       achievements: [
