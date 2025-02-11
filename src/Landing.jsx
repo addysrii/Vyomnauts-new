@@ -760,7 +760,7 @@ const ProjectCountdown = () => {
             <img
               src={projects[0].image}
               alt={projects[0].name}
-              className="relative rounded-xl w-full h-[400px] sm:h-[600px] lg:h-[700px]
+              className="relative rounded-xl w-full h-[400px] sm:h-[550px] lg:h-[650px] object-cover
                         transform group-hover:scale-105 transition-transform duration-500"
             />
           </div>
