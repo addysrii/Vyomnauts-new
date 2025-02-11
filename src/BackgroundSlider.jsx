@@ -849,7 +849,7 @@ const ProjectsSlider = () => {
               </div>
 
               {/* Project Video */}
-              <div className="relative w-full h-[250px] md:h-[600px] z-10">
+              <div className="relative w-full sm:h-[400px] lg:h-[450px] z-10">
   <video
     src={projects[currentIndex].video}
     controls
