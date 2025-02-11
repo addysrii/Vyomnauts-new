@@ -65,7 +65,7 @@ Harnessing solar wind as a free energy source for space applications is a promis
       author: "Samridhi",
       date: "2024-12-19",
       readTime: "7 min",
-      category: "Renewable Energy, Space Technology, and Astrophysics.",
+      category: "Renewable Energy",
       image: `${img1}`
     },
     {
@@ -121,68 +121,68 @@ Harnessing solar wind as a free energy source for space applications is a promis
       excerpt: "Methane is revolutionizing rocket propulsion, offering high energy efficiency, cleaner combustion, and cost-effectiveness. Unlike traditional fuels like hydrogen and RP-1, methane enables reusable rockets with minimal maintenance and can even be produced on Mars using the Sabatier process. This makes it a game-changer for deep-space exploration and interplanetary colonization.",
       content: `**Methane Fuel: The Next Generation of Rocket Propulsion**
 
-### **Methane Fuel: A Game-Changer for Rockets**
+### Methane Fuel: A Game-Changer for Rockets
 For decades, rocket propulsion has relied on fuels like liquid hydrogen (LH2) and RP-1 (refined kerosene). While these traditional fuels have driven humanity’s remarkable achievements in space exploration, they come with challenges ranging from environmental concerns to operational inefficiencies.
 
 Enter methane (CH4)—the new frontier in rocket fuel. Increasingly favored by companies like SpaceX and Blue Origin, methane is rapidly becoming the propellant of choice for cutting-edge rockets like Starship and New Glenn. But what makes methane so revolutionary? Let’s dive into the science, advantages, and future potential of this transformative fuel.
 
 ---
 
-### **Why Methane? Balancing Efficiency and Practicality**
+### Why Methane? Balancing Efficiency and Practicality
 Methane stands out as an exceptional rocket fuel due to its unique combination of high energy efficiency and operational simplicity.
 
-- **High Energy Density**  
+- High Energy Density
   Methane offers an impressive energy-to-weight ratio, enabling rockets to carry a lighter load while maximizing thrust. This translates to better flight performance and the ability to travel greater distances on a single tank of fuel.
   
-- **Cryogenic Simplicity**  
+- Cryogenic Simplicity 
   Compared to liquid hydrogen, methane is much easier to store and manage. While hydrogen requires ultra-low temperatures of -253°C and complex storage systems, methane can be maintained at a comparatively warmer -161°C. This simplifies handling and reduces costs significantly.
   
-- **Cleaner Combustion**  
+- Cleaner Combustion
   Methane burns more cleanly than kerosene, producing minimal soot and carbon deposits. This is particularly critical for reusable rockets, as cleaner engines require less maintenance between launches, allowing for faster turnaround times.
 
 ---
 
-### **Methane’s Environmental Edge**
+### Methane’s Environmental Edge
 As the aerospace industry strives for greener practices, methane emerges as a step toward more sustainable space exploration.
 
-- **Lower Soot and Carbon Deposits**  
+- Lower Soot and Carbon Deposits  
   Traditional fuels like RP-1 release significant amounts of soot and carbon particles into the atmosphere, which can harm the environment and degrade engine performance. Methane’s cleaner combustion minimizes these emissions, making it a more eco-friendly alternative.
   
-- **Reduced Carbon Footprint**  
+- Reduced Carbon Footprint 
   While methane is still a hydrocarbon, it generates less CO2 per unit of energy compared to kerosene. This reduces its overall environmental impact, aligning with efforts to create more sustainable launch systems.
   
-- **In-Situ Resource Utilization**  
+- In-Situ Resource Utilization  
   Methane can be synthesized on other planets, including Mars. By combining carbon dioxide from Mars’ atmosphere with hydrogen extracted from subsurface ice, we can produce methane fuel through the Sabatier process. This capability is a game-changer for interplanetary travel, enabling rockets to refuel in space rather than relying solely on Earth-based resources.
 
 ---
 
-### **Advantages Over Traditional Rocket Fuels**
+### Advantages Over Traditional Rocket Fuels
 Methane’s characteristics make it the ideal fuel for modern space exploration, especially in the era of reusable rockets.
 
-- **Optimized for Reusability**  
+- Optimized for Reusability 
   SpaceX’s Starship, designed for deep space missions and Mars colonization, relies on methane for its clean-burning properties. Because methane reduces engine wear, rockets can be reused more frequently, aligning with the vision of rapid, cost-effective space travel.
   
-- **Superior Thrust-to-Weight Ratio**  
+- Superior Thrust-to-Weight Ratio 
   Methane’s high energy density allows rockets to achieve better thrust without adding excessive weight. This balance is crucial for missions that demand both altitude and range with minimal fuel consumption.
   
-- **Cost-Effective and Abundant**  
+- Cost-Effective and Abundant  
   Methane is relatively inexpensive and widely available, offering an attractive combination of performance and affordability. For commercial space missions, this cost-efficiency is a significant advantage.
 
 ---
 
-### **Fueling the Future of Space Exploration**
+### Fueling the Future of Space Exploration
 Methane’s role in space exploration extends far beyond cost savings and technical efficiency—it could be the key to humanity’s interplanetary ambitions. The ability to produce methane fuel directly on Mars makes it an essential component of long-term colonization plans. By reducing reliance on Earth-based supplies, methane supports self-sustaining human habitats and extends the reach of our exploratory efforts.
 
 The Sabatier process, which converts CO2 and hydrogen into methane and water, exemplifies this potential. On Mars, this method could enable rockets to refuel for return journeys or further exploration, transforming how we approach interplanetary missions.
 
 ---
 
-### **The Power of Methane: A Summary**
+### The Power of Methane: A Summary
 Methane is reshaping the landscape of rocket propulsion, bringing us closer to a sustainable and adventurous era of space exploration. Its advantages include:
 
-- **Enhanced Efficiency:** High energy density and cleaner combustion improve performance while reducing environmental impact.
-- **Reusability:** Cleaner-burning properties support rapid rocket reuse, lowering costs and turnaround times.
-- **Sustainability:** The ability to synthesize methane on other planets supports interplanetary exploration and colonization.
+- Enhanced Efficiency: High energy density and cleaner combustion improve performance while reducing environmental impact.
+- Reusability: Cleaner-burning properties support rapid rocket reuse, lowering costs and turnaround times.
+- Sustainability: The ability to synthesize methane on other planets supports interplanetary exploration and colonization.
 
 As methane-powered rockets take to the skies, they are not just propelling spacecraft—they are paving the way for humanity’s future among the stars. With each launch, methane fuel underscores the innovation and determination driving our quest to explore the cosmos sustainably.
 
@@ -190,10 +190,79 @@ As methane-powered rockets take to the skies, they are not just propelling space
       author: "Harsh Vishwakarma",
       date: "2025-01-13",
       readTime: "8 min",
-      category: "Rocket Propulsion, Space Exploration, and Sustainable Energy",
+      category: "Rocket Propulsion",
       image: `${img3}`,
     }
   ];
+  const renderContent = (content) => {
+    const lines = content.split('\n');
+    let formattedContent = [];
+    let currentSection = [];
+
+    lines.forEach((line, index) => {
+      const trimmedLine = line.trim();
+      
+      if (trimmedLine.startsWith('# ')) {
+        formattedContent.push(
+          <h1 key={`h1-${index}`} className="text-4xl font-bold text-yellow-400 mb-8">
+            {trimmedLine.replace('# ', '')}
+          </h1>
+        );
+      } else if (trimmedLine.startsWith('### ')) {
+        if (currentSection.length > 0) {
+          formattedContent.push(
+            <div key={`section-${formattedContent.length}`} className="mb-8">
+              {currentSection}
+            </div>
+          );
+          currentSection = [];
+        }
+        formattedContent.push(
+          <h3 key={`h3-${index}`} className="text-2xl font-bold text-yellow-400 mt-8 mb-4">
+            {trimmedLine.replace('### ', '')}
+          </h3>
+        );
+      } else if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**')) {
+        formattedContent.push(
+          <h4 key={`h4-${index}`} className="text-xl font-semibold text-yellow-400 mt-6 mb-3">
+            {trimmedLine.replace(/\*\*/g, '')}
+          </h4>
+        );
+      } else if (trimmedLine.startsWith('- ')) {
+        currentSection.push(
+          <li key={`li-${index}`} className="text-yellow-100/80 ml-6 mb-2 list-disc">
+            {trimmedLine.replace('- ', '')}
+          </li>
+        );
+      } else if (trimmedLine.startsWith('1. ')) {
+        currentSection.push(
+          <li key={`li-${index}`} className="text-yellow-100/80 ml-6 mb-2 list-decimal">
+            {trimmedLine.replace(/^\d+\.\s/, '')}
+          </li>
+        );
+      } else if (trimmedLine === '---') {
+        formattedContent.push(
+          <hr key={`hr-${index}`} className="border-yellow-400/20 my-8" />
+        );
+      } else if (trimmedLine) {
+        currentSection.push(
+          <p key={`p-${index}`} className="text-yellow-100/80 mb-4 leading-relaxed">
+            {trimmedLine}
+          </p>
+        );
+      }
+    });
+
+    if (currentSection.length > 0) {
+      formattedContent.push(
+        <div key={`section-${formattedContent.length}`} className="mb-8">
+          {currentSection}
+        </div>
+      );
+    }
+
+    return formattedContent;
+  };
 
   const filteredBlogs = blogs.filter(blog => 
     blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -208,10 +277,11 @@ As methane-powered rockets take to the skies, they are not just propelling space
         </header>
         
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Back button and close button */}
           <div className="flex justify-between items-center mb-8">
             <button 
               onClick={() => setSelectedBlog(null)}
-              className="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"
+              className="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors"
             >
               <ChevronLeft size={20} />
               <span>Back to Articles</span>
@@ -226,40 +296,47 @@ As methane-powered rockets take to the skies, they are not just propelling space
             </button>
           </div>
           
+          {/* Article content */}
           <article className="space-y-8">
+            {/* Hero image */}
             <div className="relative h-[400px] rounded-2xl overflow-hidden">
               <img
                 src={selectedBlog.image}
                 alt={selectedBlog.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
             </div>
             
-            <div className="space-y-4">
-              <span className="px-4 py-2 bg-yellow-400/20 text-yellow-400 text-sm font-semibold rounded-full">
-                {selectedBlog.category}
-              </span>
-              <h1 className="text-4xl font-bold text-yellow-400">{selectedBlog.title}</h1>
-              
-              <div className="flex items-center space-x-6 text-yellow-100/60">
-                <span className="flex items-center space-x-2">
-                  <Calendar size={18} className="text-yellow-400" />
-                  <span>{new Date(selectedBlog.date).toLocaleDateString()}</span>
+            {/* Article header */}
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <span className="inline-block px-4 py-2 bg-yellow-400/20 text-yellow-400 text-sm font-semibold rounded-full">
+                  {selectedBlog.category}
                 </span>
-                <span className="flex items-center space-x-2">
-                  <Clock size={18} className="text-yellow-400" />
-                  <span>{selectedBlog.readTime} read</span>
-                </span>
+                
+                <div className="space-y-4">
+                  <h1 className="text-4xl font-bold text-yellow-400 leading-tight">
+                    {selectedBlog.title}
+                  </h1>
+                  
+                  <div className="flex items-center space-x-6 text-yellow-100/60">
+                    <div className="flex items-center space-x-2">
+                      <Calendar size={18} className="text-yellow-400" />
+                      <span>{new Date(selectedBlog.date).toLocaleDateString()}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Clock size={18} className="text-yellow-400" />
+                      <span>{selectedBlog.readTime} read</span>
+                    </div>
+                  </div>
+                </div>
               </div>
               
+              {/* Article body */}
               <div className="border-t border-yellow-400/20 pt-8">
                 <div className="prose prose-lg prose-invert prose-yellow">
-                  {selectedBlog.content.split('\n').map((paragraph, index) => (
-                    <p key={index} className="text-yellow-100/80 mb-4">
-                      {paragraph.trim()}
-                    </p>
-                  ))}
+                  {renderContent(selectedBlog.content)}
                 </div>
               </div>
             </div>
@@ -269,23 +346,24 @@ As methane-powered rockets take to the skies, they are not just propelling space
     );
   }
 
-  // Rest of the component remains the same...
   return (
     <div className="min-h-screen bg-black text-yellow-400">
       <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-yellow-400/20">
-        <Navbar/>
+        <Navbar />
       </header>
 
-      {/* Search Bar */}
+      {/* Search bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="relative top-8">
+        <div className="relative">
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400/60" size={20} />
           <input
             type="text"
             placeholder="Search cosmic insights..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-black border border-yellow-400/30 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-yellow-400 placeholder-yellow-400/50 transition-all"
+            className="w-full pl-12 pr-4 py-3 bg-black border border-yellow-400/30 rounded-xl 
+                     focus:ring-2 focus:ring-yellow-400 focus:border-transparent 
+                     text-yellow-400 placeholder-yellow-400/50 transition-all"
           />
           {searchTerm && (
             <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-sm text-yellow-400/60">
@@ -295,16 +373,19 @@ As methane-powered rockets take to the skies, they are not just propelling space
         </div>
       </div>
 
-      {/* Blog Grid */}
+      {/* Blog grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-3xl font-extrabold mb-8 text-yellow-400">
           Latest Scientific Insights
         </h2>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.map((blog) => (
             <article 
               key={blog.id} 
-              className="bg-black rounded-2xl overflow-hidden border border-yellow-400/30 hover:border-yellow-400 transform transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-400/10"
+              className="bg-black rounded-2xl overflow-hidden border border-yellow-400/30 
+                       hover:border-yellow-400 transform transition-all hover:-translate-y-2 
+                       hover:shadow-2xl hover:shadow-yellow-400/10"
             >
               <div className="relative">
                 <img
@@ -318,6 +399,7 @@ As methane-powered rockets take to the skies, they are not just propelling space
                   </span>
                 </div>
               </div>
+              
               <div className="p-6 space-y-4">
                 <h2 className="text-xl font-bold text-yellow-400 hover:text-yellow-300 transition-colors">
                   {blog.title}
