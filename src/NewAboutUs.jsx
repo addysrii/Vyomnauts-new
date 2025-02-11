@@ -254,7 +254,7 @@ members:      [
               },
               {
                 "id": 13,
-                "name": "Harsh Vishwa karma",
+                "name": "Harsh Vishwakarma",
                 "role": "Social Media head",
                 "description": " Manages online presence and engagement for outreach. ",
                 "image": `${img17}`,
