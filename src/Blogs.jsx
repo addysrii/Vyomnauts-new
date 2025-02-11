@@ -24,7 +24,7 @@ const BlogListingPage = () => {
   const blogs = [
     {
       id: 1,
-      title: "The Ultimate Free Energy Generator",
+      title: "The Ultimate Free Energy Generator By - Samraddhi Nigam",
       excerpt: "The solar wind, a constant stream of charged particles from the Sun, offers a sustainable energy source in space. By using solar sails or rotating turbines, we can convert its kinetic energy into electricity, providing a reliable and renewable power solution for satellites and space stations.",
       content: `**The Ultimate Free Energy Generator**  
 
@@ -54,9 +54,9 @@ Imagine a satellite equipped with solar wind energy harvesting systems. Two pote
 ### Obstacles and Considerations  
 While using solar wind to generate electricity is an exciting idea, several challenges need to be addressed:  
 
-- **Energy Conversion:** Converting the kinetic energy of the solar wind into usable electricity is not a simple task. Engineers must develop highly efficient technologies to capture and convert this energy without excessive energy loss.  
-- **Model Costs:** The initial expenses for designing and building solar wind harvesting systems could be high. However, once deployed, these systems can provide vast amounts of free energy for extended periods, making them cost-effective in the long run.  
-- **Distance and Efficiency:** The density of the solar wind decreases as it moves through space. Maximizing efficiency will require placing energy-harvesting satellites in optimal locations.  
+- Energy Conversion:** Converting the kinetic energy of the solar wind into usable electricity is not a simple task. Engineers must develop highly efficient technologies to capture and convert this energy without excessive energy loss.  
+- Model Costs:** The initial expenses for designing and building solar wind harvesting systems could be high. However, once deployed, these systems can provide vast amounts of free energy for extended periods, making them cost-effective in the long run.  
+- Distance and Efficiency:** The density of the solar wind decreases as it moves through space. Maximizing efficiency will require placing energy-harvesting satellites in optimal locations.  
 
 ### Conclusion  
 Harnessing solar wind as a free energy source for space applications is a promising concept. Satellites and other space-based facilities could benefit from a regular, reliable, and low-risk energy source. Achieving this goal will require further advancements in design, production, and system integration. However, if successfully implemented, solar wind energy could revolutionize sustainable power generation in space.
@@ -70,7 +70,7 @@ Harnessing solar wind as a free energy source for space applications is a promis
     },
     {
       id: 2,
-      title: "Exploring the Fermi Paradox: The Quietness of the Cosmos ",
+      title: "Exploring the Fermi Paradox: The Quietness of the Cosmos By Mohd. Faiz  ",
       excerpt: "Explore the enigmatic universe of black holes. From their formation to their impact on space-time, uncover the mysteries that make these celestial objects so fascinating",
       content: `The universe is grand, with an unfathomable number of galaxies, each hosting billions of stars and potentially even more planets. The whim that Earth is the sole cradle of intelligent beings feels more and more improbable.
     
@@ -117,7 +117,7 @@ Harnessing solar wind as a free energy source for space applications is a promis
     
     {
       id: 3,
-      title: "Methane Fuel: The Next Generation of Rocket Propulsion",
+      title: "Methane Fuel: The Next Generation of Rocket Propulsion By Harsh Vishwakarma",
       excerpt: "Methane is revolutionizing rocket propulsion, offering high energy efficiency, cleaner combustion, and cost-effectiveness. Unlike traditional fuels like hydrogen and RP-1, methane enables reusable rockets with minimal maintenance and can even be produced on Mars using the Sabatier process. This makes it a game-changer for deep-space exploration and interplanetary colonization.",
       content: `**Methane Fuel: The Next Generation of Rocket Propulsion**
 
