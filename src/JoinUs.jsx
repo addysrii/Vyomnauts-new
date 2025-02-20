@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Rocket, Star, Users, Download } from 'lucide-react';
+import { Rocket, Star, Users, FileSpreadsheet } from 'lucide-react';
 import Navbar from './Navbar';
+import * as XLSX from 'xlsx';
 
 export const JoinUsPage = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ export const JoinUsPage = () => {
   const [submitStatus, setSubmitStatus] = useState('');
 
   const yearOptions = ["First Year", "Second Year", "Third Year", "Fourth Year"];
-  const branchOptions = ["Computer Science", "Electronics & Communication", "Mechanical", "Electrical", "Civil", "Other"];
+  const branchOptions = ["CSE", "CS-AIML", "CS-AI", "CS-DS", "CS-IOT", "IT","ECE"];
 
   // Load existing submissions on component mount
   useEffect(() => {
@@ -62,6 +63,9 @@ export const JoinUsPage = () => {
       // Update state
       setSubmissions(updatedSubmissions);
       
+      // Export to Excel
+      exportToExcel(updatedSubmissions);
+      
       // Reset form and show success message
       setFormData({
         name: '', 
@@ -70,28 +74,54 @@ export const JoinUsPage = () => {
         branch: '', 
         message: ''
       });
-      setSubmitStatus('Application submitted successfully!');
-
-      // Optional: Export to downloadable JSON file
-      downloadSubmissions(updatedSubmissions);
+      setSubmitStatus('Application submitted successfully! Excel file has been downloaded.');
     } catch (error) {
       console.error("Error saving submissions:", error);
       setSubmitStatus('Failed to save application. Please try again.');
     }
   };
 
-  // Function to download submissions as JSON
-  const downloadSubmissions = (data) => {
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `vyomnauts-submissions-${new Date().toISOString().split('T')[0]}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  // Function to export submissions to Excel
+  const exportToExcel = (data) => {
+    // Format data for Excel export
+    const worksheetData = data.map(item => ({
+      ID: item.id,
+      Name: item.name,
+      Email: item.email,
+      Year: item.year,
+      Branch: item.branch,
+      Message: item.message,
+      Timestamp: new Date(item.timestamp).toLocaleString()
+    }));
+    
+    // Create worksheet and workbook
+    const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Submissions");
+    
+    // Add some styling to the headers
+    const headerStyle = {
+      font: { bold: true },
+      fill: { fgColor: { rgb: "FFD700" } }
+    };
+    
+    // Apply column widths for better readability
+    const colWidths = [
+      { wch: 10 },   // ID
+      { wch: 25 },   // Name
+      { wch: 30 },   // Email
+      { wch: 15 },   // Year
+      { wch: 25 },   // Branch
+      { wch: 50 },   // Message
+      { wch: 20 }    // Timestamp
+    ];
+    worksheet['!cols'] = colWidths;
+    
+    // Generate Excel file and trigger download
+    XLSX.writeFile(workbook, `vyomnauts-submissions-${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
-  // Function to view current submissions
+  // Function to view and download submissions
   const ViewSubmissionsModal = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -101,7 +131,7 @@ export const JoinUsPage = () => {
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 bg-[#FFD700] text-black p-3 rounded-full shadow-lg hover:bg-[#FFD790] transition-colors"
         >
-          <Download size={24} />
+          <FileSpreadsheet size={24} />
         </button>
 
         {isOpen && (
@@ -143,17 +173,21 @@ export const JoinUsPage = () => {
 
               <div className="mt-6 flex space-x-4">
                 <button 
-                  onClick={() => downloadSubmissions(submissions)}
+                  onClick={() => exportToExcel(submissions)}
                   className="bg-[#FFD700] text-black px-4 py-2 rounded-lg hover:bg-[#FFD790] transition-colors"
+                  disabled={submissions.length === 0}
                 >
-                  Download JSON
+                  Download Excel
                 </button>
                 <button 
                   onClick={() => {
-                    localStorage.removeItem('vyomnauts-submissions');
-                    setSubmissions([]);
+                    if (window.confirm('Are you sure you want to clear all submissions?')) {
+                      localStorage.removeItem('vyomnauts-submissions');
+                      setSubmissions([]);
+                    }
                   }}
                   className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                  disabled={submissions.length === 0}
                 >
                   Clear All Submissions
                 </button>
@@ -255,11 +289,13 @@ export const JoinUsPage = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
-                  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
+                  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent appearance-none"
                 >
-                  <option value="">Select year</option>
+                  <option value="" className='bg-blue-800 text-black'>Select year</option>
                   {yearOptions.map((year) => (
-                    <option key={year} value={year}>{year}</option>
+                    <option key={year} value={year} className="bg-blue-800 text-black">
+                      {year}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -270,12 +306,14 @@ export const JoinUsPage = () => {
                   value={formData.branch}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
-                  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
+                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border-gray-700 text-white 
+                  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent appearance-none"
                 >
-                  <option value="">Select branch</option>
+                  <option value="" className='bg-blue-900 text-white'>Select branch</option>
                   {branchOptions.map((branch) => (
-                    <option key={branch} value={branch}>{branch}</option>
+                    <option key={branch} value={branch} className="bg-blue-900 text-white">
+                      {branch}
+                    </option>
                   ))}
                 </select>
               </div>
