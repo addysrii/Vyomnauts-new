@@ -32,7 +32,7 @@ const VerticalSpaceCards = () => {
           <div className="lg:col-span-2 group">
             <div className="h-full bg-gradient-to-t from-blue-900/30 to-slate-400/10 border-2 border-yellow-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:border-yellow-500">
               <div className="relative">
-                <h2 className="text-3xl font-bold text-green-500 mb-8 flex items-center gap-3">
+                <h2 className="text-3xl font-bold text-amber-500 mb-8 flex items-center gap-3">
                   <Rocket className="w-8 h-8" />
                   Our Domains
                 </h2>
@@ -60,7 +60,7 @@ const VerticalSpaceCards = () => {
                     }
                   ].map((domain, i) => (
                     <div key={i} className="group/item hover:bg-yellow-500/10 p-4 rounded-xl transition-all duration-300">
-                      <div className="text-green-500 mb-3 group-hover/item:scale-110 transition-transform duration-300">
+                      <div className="text-blue-600 mb-3 group-hover/item:scale-110 transition-transform duration-300">
                         {domain.icon}
                       </div>
                       <h3 className="text-xl font-semibold text-blue-400 mb-2">{domain.title}</h3>
@@ -75,7 +75,7 @@ const VerticalSpaceCards = () => {
           {/* Why Choose Us Card */}
           <div className="group">
             <div className="h-full bg-gradient-to-t from-blue-900/30 to-slate-400/10 border-2 border-yellow-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:border-yellow-500">
-              <h2 className="text-3xl font-bold text-green-500 mb-8 flex items-center gap-3">
+              <h2 className="text-3xl font-bold text-amber-500 mb-8 flex items-center gap-3">
                 <Star className="w-8 h-8" />
                 Why Choose Us?
               </h2>
@@ -88,7 +88,7 @@ const VerticalSpaceCards = () => {
                   { icon: <Shield className="w-6 h-6" />, text: "Contribution to India's space ecosystem." }
                 ].map((item, i) => (
                   <li key={i} className="flex gap-4 items-start group/item hover:bg-yellow-500/10 p-3 rounded-xl transition-all duration-300">
-                    <span className="text-green-500 group-hover/item:scale-110 transition-transform duration-300">
+                    <span className="text-blue-600 group-hover/item:scale-110 transition-transform duration-300">
                       {item.icon}
                     </span>
                     <span className="text-white">{item.text}</span>
