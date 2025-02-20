@@ -698,7 +698,7 @@ const FeatureCard = ({ Icon, title, text }) => (
     <div className="relative p-8 rounded-xl bg-gradient-to-t from-blue-900/30 to-slate-400/10 border-2 border-yellow-500/50 
                     hover:border-orange-400/80 transition-all duration-500
                     transform hover:scale-105 hover:shadow-[0_0_40px_rgba(255,165,0,0.3)]">
-      <Icon className="h-12 w-12 mb-6 text-green-500" />
+      <Icon className="h-12 w-12 mb-6 text-amber-500" />
       <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-300 via-orange-300 to-yellow-300 
                      bg-clip-text text-transparent">{title}</h3>
       <p className="text-white/90">{text}</p>
