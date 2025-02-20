@@ -31,7 +31,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black border-t border-yellow-400 text-yellow-400 py-12">
+    <footer className="bg-black border-t border-yellow-400 text-yellow-400/70 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <h3 className="text-2xl font-bold mb-4">Vyomnauts Club</h3>
@@ -43,7 +43,7 @@ const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
           <nav className="space-y-2">
-            <a href="#" className="block hover:text-yellow-300 transition-colors">Home</a>
+            <a href="#" className="block hover:text-yellow-4 transition-colors">Home</a>
             <a href="#" className="block hover:text-yellow-300 transition-colors">Events</a>
             <a href="#" className="block hover:text-yellow-300 transition-colors">About Us</a>
             <a href="#" className="block hover:text-yellow-300 transition-colors">Contact</a>

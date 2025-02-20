@@ -308,10 +308,10 @@ members:      [
   
   
     return (
-      <div className="min-h-screen bg-black text-zinc-100">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-zinc-100">
         <Navbar />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <h1 className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-extrabold mb-6 bg-blue-400 bg-clip-text text-transparent">
             Our Mentors
           </h1>
           <VerticalMentorsList />

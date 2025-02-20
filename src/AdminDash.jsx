@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://your-api-url/api';
+const API_BASE_URL = 'localhost:5001';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('events');

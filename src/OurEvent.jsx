@@ -74,23 +74,23 @@ const EventsPage = () => {
   );
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-black">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-r from-slate-700/40 via-gray-900/50 to-blue-900/60">
       <AnimatedBackground mousePosition={mousePosition} />
 
       <div className="relative z-10">
-        <header className="sticky top-0 z-50 bg-black border-b border-yellow-400">
+        <header className="sticky top-0 z-50 bg-gradient-to-br from-black via-gray-900 to-black border-b border-yellow-400">
           <Navbar />
         </header>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-20">
           <div className="relative mb-6 mt-12">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-400" size={20} />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-400" size={20} />
             <input
               type="text"
               placeholder="Search events by name or location..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-black border-2 border-yellow-400 rounded-xl focus:ring-2 focus:ring-yellow-300 focus:border-transparent text-yellow-400 placeholder-yellow-600 transition-all"
+              className="w-full pl-12 pr-4 py-3 bg-gradient-to-br from-black via-gray-900 to-black border-2 border-yellow-400 rounded-xl focus:ring-2 focus:ring-yellow-300 focus:border-transparent text-yellow-400 placeholder-yellow-600 transition-all"
             />
           </div>
 
@@ -101,8 +101,8 @@ const EventsPage = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm transition-all ${
                   selectedCategory === category 
-                    ? 'bg-yellow-400 text-black font-bold' 
-                    : 'bg-black text-yellow-400 border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black'
+                    ? 'bg-amber-500 text-black font-bold' 
+                    : 'bg-black text-amber-500 border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black'
                 }`}
               >
                 {category}
@@ -112,8 +112,8 @@ const EventsPage = () => {
         </div>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-20">
-          <h2 className="text-3xl font-extrabold mb-8 text-yellow-400">
-            Upcoming Events
+          <h2 className="text-3xl font-extrabold mb-8 text-amber-500">
+       Our Events
           </h2>
           
           {filteredEvents.length > 0 ? (
@@ -121,7 +121,7 @@ const EventsPage = () => {
               {filteredEvents.map((event) => (
                 <article 
                   key={event.id} 
-                  className="w-full bg-black rounded-2xl overflow-hidden border-2 border-yellow-400 hover:border-yellow-300 transition-all hover:shadow-2xl hover:shadow-yellow-400/20 grid grid-cols-1 md:grid-cols-2"
+                  className="w-full bg-gradient-to-br from-black via-gray-900 to-black rounded-2xl overflow-hidden border-2 border-yellow-400 hover:border-yellow-300 transition-all hover:shadow-2xl hover:shadow-yellow-400/20 grid grid-cols-1 md:grid-cols-2"
                 >
                   <div className="relative group h-[500px] md:h-full"> {/* Fixed height container */}
                     <img
@@ -130,14 +130,14 @@ const EventsPage = () => {
                       className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-yellow-400 text-black text-sm font-bold rounded-full">
+                      <span className="px-3 py-1 bg-amber-500 text-black text-sm font-bold rounded-full">
                         {event.category}
                       </span>
                     </div>
                   </div>
                   <div className="p-8 flex flex-col justify-between">
                     <div>
-                      <h2 className="text-2xl font-bold text-yellow-400 hover:text-yellow-300 transition-colors mb-4">
+                      <h2 className="text-2xl font-bold text-amber-500 hover:text-yellow-300 transition-colors mb-4">
                         {event.title}
                       </h2>
                       <p className="text-yellow-200 text-base mb-6">
@@ -146,19 +146,19 @@ const EventsPage = () => {
                     </div>
                     <div className="space-y-3 text-base text-yellow-200 mb-6">
                       <div className="flex items-center">
-                        <Calendar size={20} className="mr-3 text-yellow-400" />
+                        <Calendar size={20} className="mr-3 text-amber-500" />
                         {new Date(event.date).toLocaleDateString()}
                       </div>
                       <div className="flex items-center">
-                        <Clock size={20} className="mr-3 text-yellow-400" />
+                        <Clock size={20} className="mr-3 text-amber-500" />
                         {event.time}
                       </div>
                       <div className="flex items-center">
-                        <MapPin size={20} className="mr-3 text-yellow-400" />
+                        <MapPin size={20} className="mr-3 text-amber-500" />
                         {event.location}
                       </div>
                     </div>
-                    <button className="w-full px-6 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-lg flex items-center justify-center space-x-2 transition-all transform hover:scale-105 hover:shadow-lg">
+                    <button className="w-full px-6 py-4 bg-amber-500 hover:bg-yellow-300 text-black font-bold rounded-lg flex items-center justify-center space-x-2 transition-all transform hover:scale-105 hover:shadow-lg">
                       <span>View Event Details</span>
                       <ChevronRight size={24} />
                     </button>
@@ -167,7 +167,7 @@ const EventsPage = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 text-yellow-400">
+            <div className="text-center py-16 text-amber-500">
               <Filter size={64} className="mx-auto mb-4" />
               <p className="text-xl">No events found. Try adjusting your search.</p>
             </div>

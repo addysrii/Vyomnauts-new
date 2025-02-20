@@ -166,12 +166,12 @@ export const JoinUsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative">
       <Navbar />
       
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-5xl font-extrabold mb-6 text-[#FFD700]">
+        <h1 className="text-5xl font-extrabold mb-6 text-amber-500">
           Join Vyomnauts Club
         </h1>
         <p className="max-w-3xl mx-auto text-xl text-gray-300 leading-relaxed">
@@ -181,23 +181,23 @@ export const JoinUsPage = () => {
 
       {/* Why Join Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-16">
-        <h2 className="text-3xl font-bold text-[#FFD700] mb-8 text-center">
+        <h2 className="text-3xl font-bold text-amber-500 mb-8 text-center">
           Why Join Us?
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
-              icon: <Rocket className="text-[#FFD700]" size={32} />,
+              icon: <Rocket className="text-amber-500" size={32} />,
               title: "Hands-on Experience",
               description: "Work on real space projects including CanSat competitions and research initiatives"
             },
             {
-              icon: <Users className="text-[#FFD700]" size={32} />,
+              icon: <Users className="text-amber-500" size={32} />,
               title: "Community",
               description: "Connect with like-minded peers and industry mentors passionate about space"
             },
             {
-              icon: <Star className="text-[#FFD700]" size={32} />,
+              icon: <Star className="text-amber-500" size={32} />,
               title: "Growth",
               description: "Develop technical skills, leadership abilities, and professional networks"
             }
@@ -208,7 +208,7 @@ export const JoinUsPage = () => {
               hover:bg-[#2A2A2A] transition-all duration-300 transform hover:scale-105"
             >
               <div className="mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-bold text-[#FFD700] mb-2">{benefit.title}</h3>
+              <h3 className="text-xl font-bold text-amber-500 mb-2">{benefit.title}</h3>
               <p className="text-gray-300">{benefit.description}</p>
             </div>
           ))}
@@ -218,7 +218,7 @@ export const JoinUsPage = () => {
       {/* Application Form */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="bg-[#1A1A1A] rounded-2xl p-8 border border-[#FFD700]/20">
-          <h3 className="text-2xl font-bold mb-6 text-[#FFD700]">Membership Application</h3>
+          <h3 className="text-2xl font-bold mb-6 text-amber-400 ">Membership Application</h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
@@ -228,7 +228,7 @@ export const JoinUsPage = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-lg bg-black border border-gray-700 text-white 
+                className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
                 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
                 placeholder="Your full name"
               />
@@ -241,7 +241,7 @@ export const JoinUsPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-lg bg-black border border-gray-700 text-white 
+                className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
                 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
                 placeholder="your@email.com"
               />
@@ -254,7 +254,7 @@ export const JoinUsPage = () => {
                   value={formData.year}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg bg-black border border-gray-700 text-white 
+                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
                   focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
                 >
                   <option value="">Select year</option>
@@ -270,7 +270,7 @@ export const JoinUsPage = () => {
                   value={formData.branch}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg bg-black border border-gray-700 text-white 
+                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
                   focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
                 >
                   <option value="">Select branch</option>
@@ -287,7 +287,7 @@ export const JoinUsPage = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-lg bg-black border border-gray-700 text-white 
+                className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
                 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
                 rows="4"
                 placeholder="Tell us about your interests in space technology and what you hope to achieve as a club member..."
@@ -304,7 +304,7 @@ export const JoinUsPage = () => {
             )}
             <button
               type="submit"
-              className="w-full py-3 px-6 rounded-lg bg-[#FFD700] text-black 
+              className="w-full py-3 px-6 rounded-lg bg-amber-500 text-black 
               font-medium hover:bg-[#FFD790] transition-colors"
             >
               Submit Application

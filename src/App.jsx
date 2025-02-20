@@ -13,7 +13,7 @@ import { JoinUsPage } from './JoinUs';
 const App = () => {
   return (
     <>
-    <div className='position-absolute'>
+    <div className=''>
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="/about" element={<AboutUsPage />} />

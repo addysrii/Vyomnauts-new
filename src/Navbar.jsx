@@ -21,9 +21,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black/90 backdrop-blur-lg shadow-yellow-400/10 shadow-lg' : 'bg-transparent'
-    }`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 
+      bg-transparent`
+    }>
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo/Brand */}
@@ -33,7 +33,7 @@ const Navbar = () => {
             aria-label="Home"
           >
             <img src={logo} alt="Vyomnauts Logo" className="h-8 w-8" />
-            <span className="text-yellow-400">
+            <span className="text-amber-500">
               PSIT Vyomnauts
             </span>
           </Link>
@@ -47,14 +47,14 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Link to="/join">
               <button 
-                className="px-4 py-2 text-yellow-400 hover:text-yellow-300 transition-colors"
+                className="px-4 py-2 text-amber-400 hover:text-yellow-300 transition-colors"
                 aria-label="Join Us"
               >
                 Join Us
               </button>
             </Link>
             <button 
-              className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-colors"
+              className="px-4 py-2 bg-amber-400 text-black rounded-lg hover:bg-yellow-300 transition-colors"
               aria-label="Sponsor Us"
             >
               Sponsor Us
@@ -64,7 +64,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden text-yellow-400 focus:outline-none"
+            className="lg:hidden text-amber-400 focus:outline-none"
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
@@ -84,14 +84,14 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4 pt-4 border-t border-yellow-400/20">
               <Link to={'/join'}>
               <button 
-                className="px-4 py-2 text-yellow-400 hover:bg-yellow-400/10 rounded-lg transition-colors"
+                className="px-4 py-2 text-amber-400 hover:bg-yellow-400/10 rounded-lg transition-colors"
                 aria-label="Join Us"
               >
                 Join Us
               </button>
               </Link>
               <button 
-                className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-colors"
+                className="px-4 py-2 bg-amber-400 text-black rounded-lg hover:bg-yellow-300 transition-colors"
                 aria-label="Sponsor Us"
               >
                 Sponsor Us
@@ -132,7 +132,7 @@ const NavItem = ({ to, text }) => (
   <li>
     <Link
       to={to}
-      className="text-yellow-400 hover:text-yellow-300 transition-colors relative group py-2"
+      className="text-amber-400 hover:text-yellow-300 transition-colors relative group py-2"
     >
       {text}
       <span className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
@@ -146,7 +146,7 @@ const NavDropdown = ({ text, children }) => {
   return (
     <li className="relative group">
       <button
-        className="text-yellow-400 hover:text-yellow-300 transition-colors flex items-center space-x-1 py-2"
+        className="text-amber-400 hover:text-yellow-300 transition-colors flex items-center space-x-1 py-2"
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         aria-haspopup="true"
@@ -172,7 +172,7 @@ const NavDropdown = ({ text, children }) => {
 const DropdownItem = ({ to, text }) => (
   <Link
     to={to}
-    className="block px-4 py-2 text-yellow-400 hover:bg-yellow-400/10 transition-colors"
+    className="block px-4 py-2 text-amber-400 hover:bg-yellow-400/10 transition-colors"
     role="menuitem"
   >
     {text}
@@ -183,7 +183,7 @@ const MobileNavItem = ({ to, text }) => (
   <li>
     <Link
       to={to}
-      className="block text-yellow-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
+      className="block text-amber-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
     >
       {text}
     </Link>
@@ -196,7 +196,7 @@ const MobileDropdown = ({ text, children }) => {
   return (
     <li>
       <button
-        className="w-full flex items-center justify-between text-yellow-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
+        className="w-full flex items-center justify-between text-amber-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -220,7 +220,7 @@ const MobileDropdown = ({ text, children }) => {
 const MobileDropdownItem = ({ to, text }) => (
   <Link
     to={to}
-    className="block text-yellow-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
+    className="block text-amber-400 hover:bg-yellow-400/10 px-4 py-2 rounded-lg transition-colors"
   >
     {text}
   </Link>

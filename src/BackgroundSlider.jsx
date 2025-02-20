@@ -767,7 +767,7 @@ const ProjectsSlider = () => {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative">
       <AnimatePresence>
         {showCarousel && <ImageCarousel />}
       </AnimatePresence>
@@ -786,7 +786,7 @@ const ProjectsSlider = () => {
               <div className="w-px h-full bg-[#FFD700]/20 absolute left-0"></div>
               {[...new Set(projects.map(p => p.year))].map((year) => (
                 <div key={year} className={`pl-8 relative cursor-pointer ${
-                  projects[currentIndex].year === year ? 'text-[#FFD700]' : 'text-gray-600'
+                  projects[currentIndex].year === year ? 'text-blue-400' : 'text-gray-600'
                 }`}>
                   <div className={`absolute left-0 w-2 h-2 rounded-full top-1/2 -translate-y-1/2 transition-all duration-300 ${
                     projects[currentIndex].year === year ? 'bg-[#FFD700] ring-2 ring-[#FFD700]/20' : 'bg-gray-800'
@@ -834,7 +834,7 @@ const ProjectsSlider = () => {
                 }`}>
                   {projects[currentIndex].status}
                 </span>
-                <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-[#FFD700]">
+                <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-blue-300">
                   {projects[currentIndex].title}
                 </h1>
               </div>
@@ -849,7 +849,7 @@ const ProjectsSlider = () => {
               </div>
 
               {/* Project Video */}
-              <div className="relative w-full h-[250px] md:h-[600px] z-10">
+              <div className="relative w-full sm:h-[400px] lg:h-[450px] z-10 ">
   <video
     src={projects[currentIndex].video}
     controls
@@ -879,7 +879,7 @@ const ProjectsSlider = () => {
         className="w-full h-48 object-cover" 
       />
       <div className="p-6">
-        <h4 className="text-[#FFD700] font-medium text-lg mb-2">{item.title}</h4>
+        <h4 className="text-blue-300 font-medium text-lg mb-2">{item.title}</h4>
         <p className="text-gray-400 text-sm">{item.source}</p>
         <p className="text-gray-500 text-sm mb-4">{item.date}</p>
         <a 
@@ -899,7 +899,7 @@ const ProjectsSlider = () => {
                   <div key={index} className="bg-black/30 rounded-lg overflow-hidden border border-[#FFD700]/20">
                     <img src={model.thumbnail} alt={model.title} className="w-full h-48 object-cover" />
                     <div className="p-6">
-                      <h4 className="text-[#FFD700] font-medium text-lg mb-4">{model.title}</h4>
+                      <h4 className="text-blue-300 font-medium text-lg mb-4">{model.title}</h4>
                       <a href={model.url} className="text-[#FFD700]/80 hover:text-[#FFD700] inline-flex items-center gap-2">
                         View Model
                         <ChevronRight className="w-4 h-4" />
@@ -916,7 +916,7 @@ const ProjectsSlider = () => {
       <div className="flex items-center gap-4">
         <Youtube className="w-8 h-8 text-red-500" />
         <div>
-          <h4 className="text-[#FFD700] font-medium text-lg mb-2">{video.title}</h4>
+          <h4 className="text-blue-300 font-medium text-lg mb-2">{video.title}</h4>
           <a 
             href={video.url} 
             className="relative z-40 text-[#FFD700]/80 hover:text-[#FFD700] inline-flex items-center gap-2"
