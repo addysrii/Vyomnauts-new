@@ -587,13 +587,13 @@ const StarsBackground = () => {
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({
-        x: (e.clientX / window.innerWidth) * 15,
-        y: (e.clientY / window.innerHeight) * 15
+        x: (e.clientX / window.innerWidth) * 5,
+        y: (e.clientY / window.innerHeight) * 5
       });
     };
 
     const handleScroll = () => {
-      setScrollPosition(window.scrollY * 0.15);
+      setScrollPosition(window.scrollY * 0.05);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -611,15 +611,15 @@ const StarsBackground = () => {
         className="absolute inset-0 bg-gradient-to-b from-black via-orange-900/10 to-black 
                    opacity-90 transition-all duration-1000"
         style={{ 
-          transform: `translateY(${scrollPosition * 0.2}px)`,
-          opacity: 1 - (scrollPosition * 0.0005)
+          transform: `translateY(${scrollPosition * 0.1}px)`,
+          opacity: 1 - (scrollPosition * 0.0003)
         }}
       />
 
       {/* Animated Particle Layers */}
       <div 
-        className="absolute inset-0 transition-transform duration-200"
-        style={{ transform: `translate(${-mousePosition.x * 0.3}px, ${-mousePosition.y * 0.3}px)` }}
+        className="absolute inset-0 transition-transform duration-500"
+        style={{ transform: `translate(${-mousePosition.x * 0.1}px, ${-mousePosition.y * 0.1}px)` }}
       >
         {[...Array(100)].map((_, i) => {
           const colors = [
@@ -638,7 +638,7 @@ const StarsBackground = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 background: colors[Math.floor(Math.random() * colors.length)],
-                animation: `particleFloat ${Math.random() * 10 + 5}s infinite ease-in-out ${Math.random() * 5}s`,
+                animation: `particleFloat ${Math.random() * 15 + 10}s infinite ease-in-out ${Math.random() * 5}s`,
                 boxShadow: '0 0 8px currentColor'
               }}
             />
@@ -648,8 +648,8 @@ const StarsBackground = () => {
 
       {/* Cosmic Dust Effect */}
       <div 
-        className="absolute inset-0 transition-transform duration-300"
-        style={{ transform: `translate(${-mousePosition.x * 0.5}px, ${-mousePosition.y * 0.5}px)` }}
+        className="absolute inset-0 transition-transform duration-700"
+        style={{ transform: `translate(${-mousePosition.x * 0.2}px, ${-mousePosition.y * 0.5}px)` }}
       >
         {[...Array(50)].map((_, i) => {
           const colors = [
@@ -668,7 +668,7 @@ const StarsBackground = () => {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 background: colors[Math.floor(Math.random() * colors.length)],
-                animation: `cosmicDust ${Math.random() * 15 + 10}s infinite ease-in-out ${Math.random() * 5}s`,
+                animation: `cosmicDust ${Math.random() * 20 + 15}s infinite ease-in-out ${Math.random() * 5}s`,
                 boxShadow: '0 0 12px currentColor'
               }}
             />
@@ -681,8 +681,8 @@ const StarsBackground = () => {
         <div 
           className="absolute inset-0 bg-gradient-radial from-yellow-500/20 via-orange-500/10 to-transparent" 
           style={{ 
-            animation: 'energyWave 20s infinite',
-            transform: `translate(${-mousePosition.x * 0.1}px, ${-mousePosition.y * 0.1}px)`
+            animation: 'energyWave 30s infinite',
+            transform: `translate(${-mousePosition.x * 0.05}px, ${-mousePosition.y * 0.05}px)`
           }} 
         />
       </div>
@@ -698,7 +698,7 @@ const FeatureCard = ({ Icon, title, text }) => (
     <div className="relative p-8 rounded-xl bg-gradient-to-t from-blue-900/30 to-slate-400/10 border-2 border-yellow-500/50 
                     hover:border-orange-400/80 transition-all duration-500
                     transform hover:scale-105 hover:shadow-[0_0_40px_rgba(255,165,0,0.3)]">
-      <Icon className="h-12 w-12 mb-6 text-green-500" />
+      <Icon className="h-12 w-12 mb-6 text-amber-500" />
       <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-300 via-orange-300 to-yellow-300 
                      bg-clip-text text-transparent">{title}</h3>
       <p className="text-white/90">{text}</p>
@@ -824,46 +824,47 @@ const SpaceClubLanding = () => {
       <Footer/>
       
       <style jsx global>{`
-        @keyframes particleFloat {
-          0%, 100% { 
-            opacity: 0.4; 
-            transform: translate(0, 0) rotate(0deg); 
-          }
-          25% { 
-            opacity: 0.8;
-            transform: translate(10px, -10px) rotate(90deg);
-          }
-          50% { 
-            opacity: 0.2;
-            transform: translate(-5px, 15px) rotate(180deg);
-          }
-          75% { 
-            opacity: 0.6;
-            transform: translate(-15px, -5px) rotate(270deg);
-          }
-        }
+       @keyframes particleFloat {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: translate(0, 0) rotate(0deg); 
+  }
+  25% { 
+    opacity: 0.8;
+    transform: translate(3px, -3px) rotate(20deg); /* Less movement */
+  }
+  50% { 
+    opacity: 0.2;
+    transform: translate(-2px, 4px) rotate(40deg); /* Less movement */
+  }
+  75% { 
+    opacity: 0.6;
+    transform: translate(-4px, -2px) rotate(60deg); /* Less movement */
+  }
+}
 
-        @keyframes cosmicDust {
-          0%, 100% { 
-            opacity: 0.3; 
-            transform: scale(1) rotate(0deg); 
-          }
-          50% { 
-            opacity: 0.7; 
-            transform: scale(1.5) rotate(180deg);
-            }
-        }
+@keyframes cosmicDust {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1) rotate(45deg); /* Less scaling & rotation */
+  }
+}
 
-        @keyframes energyWave {
-          0%, 100% { 
-            opacity: 0.1; 
-            transform: scale(1) rotate(0deg); 
-          }
-          50% { 
-            opacity: 0.3; 
-            transform: scale(1.1) rotate(5deg); 
-          }
-        }
+@keyframes energyWave {
+  0%, 100% { 
+    opacity: 0.1; 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.02) rotate(2deg); /* Minimal movement */
+  }
+}
+
 
         .bg-gradient-radial {
           background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
