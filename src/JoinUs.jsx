@@ -14,7 +14,7 @@ export const JoinUsPage = () => {
   const [submitStatus, setSubmitStatus] = useState('');
 
   const yearOptions = ["First Year", "Second Year", "Third Year", "Fourth Year"];
-  const branchOptions = ["CSE", "CS-AIML", "CS-AI", "CS-DS", "AIDS", "CS-IOT",'IOT',"ECE",];
+  const branchOptions = ["Computer Science", "Electronics & Communication", "Mechanical", "Electrical", "Civil", "Other"];
 
   // Load existing submissions on component mount
   useEffect(() => {
@@ -250,34 +250,40 @@ export const JoinUsPage = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Year of Study</label>
                 <select
-                  name="year"
-                  value={formData.year}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
-                  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
-                >
-                  <option value="">Select year</option>
-                  {yearOptions.map((year) => (
-                    <option key={year} value={year}>{year}</option>
-                  ))}
-                </select>
+  name="year"
+  value={formData.year}
+  onChange={handleChange}
+  required
+  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black  border border-gray-700 text-white 
+  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent appearance-none"
+>
+  <option value="" className='bg-blue-800 text-black'>Select year</option>
+  {yearOptions.map((year) => (
+    <option key={year} value={year} className="bg-blue-800 text-black">
+      {year}
+    </option>
+  ))}
+</select>
+
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">Branch</label>
                 <select
-                  name="branch"
-                  value={formData.branch}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
-                  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
-                >
-                  <option value="">Select branch</option>
-                  {branchOptions.map((branch) => (
-                    <option key={branch} value={branch}>{branch}</option>
-                  ))}
-                </select>
+  name="branch"
+  value={formData.branch}
+  onChange={handleChange}
+  required
+  className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border-gray-700 text-white 
+  focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent appearance-none"
+>
+  <option value="" className='bg-blue-900 text-white'>Select branch</option>
+  {branchOptions.map((branch) => (
+    <option key={branch} value={branch} className="bg-blue-900 text-white">
+      {branch}
+    </option>
+  ))}
+</select>
+
               </div>
             </div>
             <div>
