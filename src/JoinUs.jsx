@@ -14,7 +14,7 @@ export const JoinUsPage = () => {
   const [submitStatus, setSubmitStatus] = useState('');
 
   const yearOptions = ["First Year", "Second Year", "Third Year", "Fourth Year"];
-  const branchOptions = ["Computer Science", "Electronics & Communication", "Mechanical", "Electrical", "Civil", "Other"];
+  const branchOptions = ["CSE", "CS-AIML", "CS-AI", "CS-DS", "AIDS", "CS-IOT",'IOT',"ECE",];
 
   // Load existing submissions on component mount
   useEffect(() => {
