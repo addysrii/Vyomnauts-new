@@ -556,6 +556,11 @@
 
 // export default SpaceClubLanding;
 // SpaceClubLanding.jsx
+
+import bgImage1 from "./assets/space1.jpg"
+import bgImage2 from "./assets/space2.jpg"
+import bgImage3 from "./assets/space3.jpg"
+import bgImage4 from "./assets/space4.jpg"
 import React, { useState, useEffect } from 'react';
 import { 
   Rocket, 
@@ -570,6 +575,8 @@ import Navbar from './Navbar';
 import VerticalSpaceCards from './Description';
 import Footer from './Footer';
 
+
+
 const NavLink = ({ href, children }) => (
   <a 
     href={href} 
@@ -579,113 +586,49 @@ const NavLink = ({ href, children }) => (
   </a>
 );
 
-// Stars Background Component
-const StarsBackground = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [scrollPosition, setScrollPosition] = useState(0);
-
+// Fixed Zooming Background Component
+const ZoomingBackground = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 5,
-        y: (e.clientY / window.innerHeight) * 5
-      });
-    };
-
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY * 0.05);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % 3);
+    }, 8000); // Change image every 8 seconds
+    
+    return () => clearInterval(interval);
   }, []);
-
+  
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      {/* Enhanced Background Gradient */}
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Overlay to darken the background images */}
+      <div className="absolute inset-0 bg-black/70 z-10"></div>
+      
+      {/* Background Images with explicit zoom animations */}
       <div 
-        className="absolute inset-0 bg-gradient-to-b from-black via-orange-900/10 to-black 
-                   opacity-90 transition-all duration-1000"
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${activeIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
-          transform: `translateY(${scrollPosition * 0.1}px)`,
-          opacity: 1 - (scrollPosition * 0.0003)
+          backgroundImage: `url(${bgImage1})`,
+          animation: activeIndex === 0 ? 'explicit-zoom-in 8s linear forwards' : 'none'
         }}
       />
-
-      {/* Animated Particle Layers */}
+      
       <div 
-        className="absolute inset-0 transition-transform duration-500"
-        style={{ transform: `translate(${-mousePosition.x * 0.1}px, ${-mousePosition.y * 0.1}px)` }}
-      >
-        {[...Array(100)].map((_, i) => {
-          const colors = [
-            'rgba(255, 255, 255, 0.8)',  // White
-            'rgba(255, 200, 0, 0.8)',    // Yellow
-            'rgba(255, 140, 0, 0.8)',    // Orange
-            'rgba(255, 165, 0, 0.8)'     // Golden
-          ];
-          return (
-            <div
-              key={`particle-${i}`}
-              className="absolute rounded-full"
-              style={{
-                width: Math.random() * 2 + 1 + 'px',
-                height: Math.random() * 2 + 1 + 'px',
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                background: colors[Math.floor(Math.random() * colors.length)],
-                animation: `particleFloat ${Math.random() * 15 + 10}s infinite ease-in-out ${Math.random() * 5}s`,
-                boxShadow: '0 0 8px currentColor'
-              }}
-            />
-          );
-        })}
-      </div>
-
-      {/* Cosmic Dust Effect */}
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${activeIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
+        style={{ 
+          backgroundImage: `url(${bgImage2})`,
+          animation: activeIndex === 1 ? 'explicit-zoom-out 8s linear forwards' : 'none'
+        }}
+      />
+      
       <div 
-        className="absolute inset-0 transition-transform duration-700"
-        style={{ transform: `translate(${-mousePosition.x * 0.2}px, ${-mousePosition.y * 0.5}px)` }}
-      >
-        {[...Array(50)].map((_, i) => {
-          const colors = [
-            'rgba(255, 200, 0, 0.6)',    // Yellow
-            'rgba(255, 140, 0, 0.6)',    // Orange
-            'rgba(255, 255, 255, 0.6)',  // White
-            'rgba(255, 165, 0, 0.6)'     // Golden
-          ];
-          return (
-            <div
-              key={`dust-${i}`}
-              className="absolute"
-              style={{
-                width: '3px',
-                height: '3px',
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                background: colors[Math.floor(Math.random() * colors.length)],
-                animation: `cosmicDust ${Math.random() * 20 + 15}s infinite ease-in-out ${Math.random() * 5}s`,
-                boxShadow: '0 0 12px currentColor'
-              }}
-            />
-          );
-        })}
-      </div>
-
-      {/* Energy Wave Effect */}
-      <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-gradient-radial from-yellow-500/20 via-orange-500/10 to-transparent" 
-          style={{ 
-            animation: 'energyWave 30s infinite',
-            transform: `translate(${-mousePosition.x * 0.05}px, ${-mousePosition.y * 0.05}px)`
-          }} 
-        />
-      </div>
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${activeIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
+        style={{ 
+          backgroundImage: `url(${bgImage3})`,
+          animation: activeIndex === 2 ? 'explicit-zoom-in 8s linear forwards' : 'none'
+        }}
+      />
+      
+     
     </div>
   );
 };
@@ -795,76 +738,78 @@ const ProjectCountdown = () => {
 // Main Component
 const SpaceClubLanding = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-r from-slate-700/40 via-gray-900/50 to-blue-900/60 text-white overflow-hidden">
-      <StarsBackground />
+    <div className="relative min-h-screen bg-black text-white overflow-hidden flex flex-col">
+      <ZoomingBackground />
       <Navbar />
       <VerticalSpaceCards/>
-      <div className="min-h-screen flex flex-col items-center justify-center relative z-10 mt-20">
-        <div className="text-center px-6 max-w-6xl mx-auto space-y-24">
-          <ProjectCountdown />
+      
+      {/* Add flex-grow to push footer to bottom */}
+      <div className="flex-grow">
+        <div className="min-h-screen flex flex-col items-center justify-center relative z-10 mt-20">
+          <div className="text-center px-6 max-w-6xl mx-auto space-y-24">
+            <ProjectCountdown />
+          </div>
+
+          <div className="absolute bottom-10 w-full text-center animate-bounce">
+            <ChevronDown className="mx-auto h-8 w-8 text-yellow-400" />
+          </div>
         </div>
 
-        <div className="absolute bottom-10 w-full text-center animate-bounce">
-          <ChevronDown className="mx-auto h-8 w-8 text-yellow-400" />
+        <div className="container mx-auto px-6 py-20 relative z-10">
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              { Icon: Telescope, title: 'Observation', text: 'Access to advanced telescopes and imaging equipment for deep space observation' },
+              { Icon: Star, title: 'Research', text: 'Participate in groundbreaking astronomical research projects and discoveries' },
+              { Icon: Satellite, title: 'Technology', text: 'Learn about cutting-edge space technology and satellite systems' }
+            ].map((feature) => (
+              <FeatureCard key={feature.title} {...feature} />
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="grid md:grid-cols-3 gap-12">
-          {[
-            { Icon: Telescope, title: 'Observation', text: 'Access to advanced telescopes and imaging equipment for deep space observation' },
-            { Icon: Star, title: 'Research', text: 'Participate in groundbreaking astronomical research projects and discoveries' },
-            { Icon: Satellite, title: 'Technology', text: 'Learn about cutting-edge space technology and satellite systems' }
-          ].map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
+      {/* Ensure footer has a proper z-index and is positioned relative */}
+      <div className="relative z-10">
+        <Footer/>
       </div>
-
-      <Footer/>
       
       <style jsx global>{`
-       @keyframes particleFloat {
-  0%, 100% { 
-    opacity: 0.4; 
-    transform: translate(0, 0) rotate(0deg); 
-  }
-  25% { 
-    opacity: 0.8;
-    transform: translate(3px, -3px) rotate(20deg); /* Less movement */
-  }
-  50% { 
-    opacity: 0.2;
-    transform: translate(-2px, 4px) rotate(40deg); /* Less movement */
-  }
-  75% { 
-    opacity: 0.6;
-    transform: translate(-4px, -2px) rotate(60deg); /* Less movement */
-  }
-}
+        @keyframes explicit-zoom-in {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.15);
+          }
+        }
 
-@keyframes cosmicDust {
-  0%, 100% { 
-    opacity: 0.3; 
-    transform: scale(1) rotate(0deg); 
-  }
-  50% { 
-    opacity: 0.7; 
-    transform: scale(1.1) rotate(45deg); /* Less scaling & rotation */
-  }
-}
+        @keyframes explicit-zoom-out {
+          0% {
+            transform: scale(1.15);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
 
-@keyframes energyWave {
-  0%, 100% { 
-    opacity: 0.1; 
-    transform: scale(1) rotate(0deg); 
-  }
-  50% { 
-    opacity: 0.3; 
-    transform: scale(1.02) rotate(2deg); /* Minimal movement */
-  }
-}
+        /* Fallback zooming animation for browsers that don't support the explicit zoom animations */
+        .zoom-in {
+          animation: zoom-in-fallback 8s ease-in-out;
+        }
 
+        .zoom-out {
+          animation: zoom-out-fallback 8s ease-in-out;
+        }
+
+        @keyframes zoom-in-fallback {
+          from { transform: scale(1); }
+          to { transform: scale(1.15); }
+        }
+
+        @keyframes zoom-out-fallback {
+          from { transform: scale(1.15); }
+          to { transform: scale(1); }
+        }
 
         .bg-gradient-radial {
           background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
@@ -925,21 +870,6 @@ const SpaceClubLanding = () => {
           transition: width 0.3s ease;
         }
 
-        .link-underline: {
-          position: relative;
-        }
-
-        .link-underline::after {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: -2px;
-          left: 0;
-          background: linear-gradient(90deg, #9370db, #4b0082);
-          transition: width 0.3s ease;
-        }
-
         .link-underline:hover::after {
           width: 100%;
         }
@@ -949,8 +879,6 @@ const SpaceClubLanding = () => {
 };
 
 export default SpaceClubLanding;
-
-// Additional utility components you might need:
 
 // Loading Component
 const LoadingSpinner = () => (
@@ -995,6 +923,7 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
 
 // Usage in your app:
 // import { BrowserRouter as Router } from 'react-router-dom';

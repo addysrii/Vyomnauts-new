@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Rocket, Star, Users, FileSpreadsheet } from 'lucide-react';
+import { Rocket, Star, Users, FileSpreadsheet, Lock } from 'lucide-react';
 import Navbar from './Navbar';
 import * as XLSX from 'xlsx';
 
@@ -13,6 +13,7 @@ export const JoinUsPage = () => {
   });
   const [submissions, setSubmissions] = useState([]);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const yearOptions = ["First Year", "Second Year", "Third Year", "Fourth Year"];
   const branchOptions = ["CSE", "CS-AIML", "CS-AI", "CS-DS", "CS-IOT", "IT","ECE"];
@@ -46,6 +47,8 @@ export const JoinUsPage = () => {
       return;
     }
 
+    setIsSubmitting(true);
+    
     // Create a new submission with timestamp
     const newSubmission = {
       ...formData,
@@ -53,36 +56,59 @@ export const JoinUsPage = () => {
       timestamp: new Date().toISOString()
     };
 
-    // Update submissions array
+    // Add to local submissions array (for user's own records)
     const updatedSubmissions = [...submissions, newSubmission];
+    setSubmissions(updatedSubmissions);
+    localStorage.setItem('vyomnauts-submissions', JSON.stringify(updatedSubmissions));
     
-    try {
-      // Save to local storage
-      localStorage.setItem('vyomnauts-submissions', JSON.stringify(updatedSubmissions));
-      
-      // Update state
-      setSubmissions(updatedSubmissions);
-      
-      // Export to Excel
-      exportToExcel(updatedSubmissions);
-      
-      // Reset form and show success message
-      setFormData({
-        name: '', 
-        email: '', 
-        year: '', 
-        branch: '', 
-        message: ''
+    // SEND TO GOOGLE SHEETS via Google Apps Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzrYCzqGIZHf1p8sGh8pOYPiHyqOZGGprubj1bHGg9HTg4JE7lkkxBYtbLRptoJtvU5/exec';
+    
+    // Show loading status
+    setSubmitStatus('Submitting application...');
+    
+    // Format data for Google Sheets
+    const formDataForSheet = new FormData();
+    formDataForSheet.append('name', formData.name);
+    formDataForSheet.append('email', formData.email);
+    formDataForSheet.append('year', formData.year);
+    formDataForSheet.append('branch', formData.branch);
+    formDataForSheet.append('message', formData.message);
+    formDataForSheet.append('timestamp', new Date().toLocaleString());
+    
+    // Send data to Google Sheets
+    fetch(scriptURL, { method: 'POST', body: formDataForSheet })
+      .then(response => {
+        if (response.ok) {
+          // Reset form and show success message
+          setFormData({
+            name: '', 
+            email: '', 
+            year: '', 
+            branch: '', 
+            message: ''
+          });
+          setSubmitStatus('Application submitted successfully!');
+          
+          // Still create local Excel file for the user
+          exportToExcel([newSubmission], true);
+        } else {
+          throw new Error('Server responded with an error');
+        }
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        setSubmitStatus('Your application was saved locally, but we couldn\'t send it to our database. Please contact us if this persists.');
+        // Still provide Excel to user even if server submission fails
+        exportToExcel([newSubmission], true);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      setSubmitStatus('Application submitted successfully! Excel file has been downloaded.');
-    } catch (error) {
-      console.error("Error saving submissions:", error);
-      setSubmitStatus('Failed to save application. Please try again.');
-    }
   };
 
   // Function to export submissions to Excel
-  const exportToExcel = (data) => {
+  const exportToExcel = (data, isSingleSubmission = false) => {
     // Format data for Excel export
     const worksheetData = data.map(item => ({
       ID: item.id,
@@ -118,80 +144,174 @@ export const JoinUsPage = () => {
     worksheet['!cols'] = colWidths;
     
     // Generate Excel file and trigger download
-    XLSX.writeFile(workbook, `vyomnauts-submissions-${new Date().toISOString().split('T')[0]}.xlsx`);
+    const filename = isSingleSubmission 
+      ? `vyomnauts-application-${data[0].name.replace(/\s+/g, '-')}.xlsx`
+      : `vyomnauts-all-submissions-${new Date().toISOString().split('T')[0]}.xlsx`;
+    
+    XLSX.writeFile(workbook, filename);
   };
 
-  // Function to view and download submissions
-  const ViewSubmissionsModal = () => {
+  // Admin Panel Component
+  const AdminPanel = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const [password, setPassword] = useState('');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [error, setError] = useState('');
+    
+    // Simple admin password - in a real app, use proper authentication
+    const ADMIN_PASSWORD = 'vyomAdmin2025';
+    
+    const handleLogin = (e) => {
+      e.preventDefault();
+      if (password === ADMIN_PASSWORD) {
+        setIsAuthenticated(true);
+        setError('');
+      } else {
+        setError('Invalid password');
+      }
+    };
+    
+    const handleLogout = () => {
+      setIsAuthenticated(false);
+      setPassword('');
+    };
+    
     return (
       <>
         <button 
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 bg-[#FFD700] text-black p-3 rounded-full shadow-lg hover:bg-[#FFD790] transition-colors"
+          title="Admin Access"
         >
-          <FileSpreadsheet size={24} />
+          <Lock size={24} />
         </button>
 
         {isOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
             <div className="bg-[#1A1A1A] rounded-2xl p-8 w-full max-w-4xl max-h-[80vh] overflow-auto">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-[#FFD700]">Submissions</h2>
+                <h2 className="text-2xl font-bold text-[#FFD700]">Admin Panel</h2>
                 <button 
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (isAuthenticated) handleLogout();
+                  }}
                   className="text-white hover:text-[#FFD700]"
                 >
                   Close
                 </button>
               </div>
               
-              {submissions.length === 0 ? (
-                <p className="text-gray-400">No submissions yet.</p>
+              {!isAuthenticated ? (
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Admin Password</label>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="w-full px-4 py-2 rounded-lg bg-gradient-to-br from-black via-gray-900 to-black border border-gray-700 text-white 
+                      focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
+                      placeholder="Enter admin password"
+                    />
+                  </div>
+                  {error && <p className="text-red-500">{error}</p>}
+                  <div className="text-xs text-gray-400 mb-4">
+                    <p>Note: For complete submission data, please check the Google Sheet.</p>
+                    <p>The data shown here is only from this browser and may not include all submissions.</p>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full py-2 px-4 rounded-lg bg-amber-500 text-black 
+                    font-medium hover:bg-[#FFD790] transition-colors"
+                  >
+                    Login
+                  </button>
+                </form>
               ) : (
-                <div className="space-y-4">
-                  {submissions.map((submission) => (
-                    <div 
-                      key={submission.id} 
-                      className="bg-black p-4 rounded-lg border border-[#FFD700]/20"
-                    >
-                      <div className="grid grid-cols-2 gap-2">
-                        <p><strong>Name:</strong> {submission.name}</p>
-                        <p><strong>Email:</strong> {submission.email}</p>
-                        <p><strong>Year:</strong> {submission.year}</p>
-                        <p><strong>Branch:</strong> {submission.branch}</p>
+                <>
+                  <div className="mb-6">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-xl font-semibold text-amber-400">Local Applications Dashboard</h3>
+                      <div className="flex space-x-2">
+                        <button 
+                          onClick={() => exportToExcel(submissions)}
+                          className="bg-[#FFD700] text-black px-4 py-2 rounded-lg hover:bg-[#FFD790] transition-colors flex items-center"
+                          disabled={submissions.length === 0}
+                        >
+                          <FileSpreadsheet size={18} className="mr-2" />
+                          Export Local to Excel
+                        </button>
+                        <button 
+                          onClick={handleLogout}
+                          className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                        >
+                          Logout
+                        </button>
                       </div>
-                      <p className="mt-2"><strong>Message:</strong> {submission.message}</p>
-                      <p className="text-sm text-gray-500 mt-2">
-                        Submitted: {new Date(submission.timestamp).toLocaleString()}
-                      </p>
                     </div>
-                  ))}
-                </div>
+                    
+                    <div className="mt-4 bg-black/50 p-3 rounded-lg text-amber-300 flex flex-col space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <span className="font-bold">{submissions.length}</span>
+                        <span>{submissions.length === 1 ? 'application' : 'applications'} stored locally</span>
+                      </div>
+                      <div className="text-sm text-gray-400">
+                        <p>For complete submission data, please access the Google Sheet directly.</p>
+                        <a 
+                          href="https://docs.google.com/spreadsheets/d/1ZngtyFDs5SzYVguViYGZ9hSIW2Pqzrgjt4ejjGyjQbM/edit?usp=sharing" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-amber-400 hover:underline"
+                        >
+                          Open Google Sheet
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+              
+                  {submissions.length === 0 ? (
+                    <p className="text-gray-400">No applications stored locally.</p>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {submissions.map((submission) => (
+                          <div 
+                            key={submission.id} 
+                            className="bg-black p-4 rounded-lg border border-[#FFD700]/20 hover:border-[#FFD700]/50 transition-all"
+                          >
+                            <h4 className="font-bold text-white truncate">{submission.name}</h4>
+                            <p className="text-amber-300 text-sm mb-2">{submission.email}</p>
+                            <div className="flex space-x-2 mb-2">
+                              <span className="px-2 py-1 bg-gray-800 rounded-full text-xs">{submission.year}</span>
+                              <span className="px-2 py-1 bg-gray-800 rounded-full text-xs">{submission.branch}</span>
+                            </div>
+                            <p className="text-sm text-gray-300 line-clamp-3 mb-2">{submission.message}</p>
+                            <p className="text-xs text-gray-500">
+                              {new Date(submission.timestamp).toLocaleString()}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-4 pt-4 border-t border-gray-800 flex justify-end">
+                        <button 
+                          onClick={() => {
+                            if (window.confirm('⚠️ WARNING: Are you sure you want to clear local submissions? This only affects data in this browser.')) {
+                              localStorage.removeItem('vyomnauts-submissions');
+                              setSubmissions([]);
+                            }
+                          }}
+                          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                          disabled={submissions.length === 0}
+                        >
+                          Clear Local Submissions
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </>
               )}
-
-              <div className="mt-6 flex space-x-4">
-                <button 
-                  onClick={() => exportToExcel(submissions)}
-                  className="bg-[#FFD700] text-black px-4 py-2 rounded-lg hover:bg-[#FFD790] transition-colors"
-                  disabled={submissions.length === 0}
-                >
-                  Download Excel
-                </button>
-                <button 
-                  onClick={() => {
-                    if (window.confirm('Are you sure you want to clear all submissions?')) {
-                      localStorage.removeItem('vyomnauts-submissions');
-                      setSubmissions([]);
-                    }
-                  }}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
-                  disabled={submissions.length === 0}
-                >
-                  Clear All Submissions
-                </button>
-              </div>
             </div>
           </div>
         )}
@@ -335,24 +455,29 @@ export const JoinUsPage = () => {
               <div className={`p-4 rounded-lg ${
                 submitStatus.includes('successfully') 
                   ? 'bg-green-600/20 text-green-400' 
-                  : 'bg-red-600/20 text-red-400'
+                  : submitStatus.includes('Submitting')
+                    ? 'bg-blue-600/20 text-blue-400'
+                    : 'bg-red-600/20 text-red-400'
               }`}>
                 {submitStatus}
               </div>
             )}
             <button
               type="submit"
-              className="w-full py-3 px-6 rounded-lg bg-amber-500 text-black 
-              font-medium hover:bg-[#FFD790] transition-colors"
+              className={`w-full py-3 px-6 rounded-lg bg-amber-500 text-black 
+              font-medium hover:bg-[#FFD790] transition-colors ${
+                isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+              }`}
+              disabled={isSubmitting}
             >
-              Submit Application
+              {isSubmitting ? 'Submitting...' : 'Submit Application'}
             </button>
           </form>
         </div>
       </div>
 
-      {/* Submissions Modal */}
-      <ViewSubmissionsModal />
+      {/* Admin Panel */}
+      <AdminPanel />
     </div>
   );
 };

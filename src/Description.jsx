@@ -30,7 +30,7 @@ const VerticalSpaceCards = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Domains Card - Spans 2 columns */}
           <div className="lg:col-span-2 group">
-            <div className="h-full bg-gradient-to-t from-blue-900/30 to-slate-400/10 border-2 border-yellow-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:border-yellow-500">
+            <div className="h-full bg-gradient-to-t from-blue-900/10 to-slate-400/10 border-2 border-yellow-500/50 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:border-yellow-500">
               <div className="relative">
                 <h2 className="text-3xl font-bold text-amber-500 mb-8 flex items-center gap-3">
                   <Rocket className="w-8 h-8" />
