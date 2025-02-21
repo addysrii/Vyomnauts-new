@@ -569,7 +569,7 @@ import {
   Satellite, 
   Telescope 
 } from 'lucide-react';
-import img1 from "./assets/trishul2.png";
+// import img from "./assets/trishul2.png";
 import img from "./assets/trishul-1.png";
 import Navbar from './Navbar';
 import VerticalSpaceCards from './Description';
@@ -685,48 +685,50 @@ const ProjectCountdown = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
-      <div className=" bg-gradient-to-r from-slate-700/40 via-gray-900/50 border-2 border-yellow-500/50 rounded-3xl p-4 sm:p-8 lg:p-12 backdrop-blur-lg
+      <div className="bg-gradient-to-r from-slate-700/40 via-gray-900/50 border-2 border-yellow-500/50 rounded-3xl p-4 sm:p-8 lg:p-12 backdrop-blur-lg
                     shadow-[0_0_50px_rgba(255,165,0,0.15)] hover:shadow-[0_0_70px_rgba(255,165,0,0.25)]
                     transition-all duration-500">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
-          <div className="space-y-6 md:space-y-8">
-            <div>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-yellow-300 via-orange-300 to-yellow-300
-                            bg-clip-text text-transparent mb-2 sm:mb-4">
-                {projects[0].name}
-              </h3>
-              <p className="text-base sm:text-lg text-white/90">
-                {projects[0].description}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
-              {Object.entries(timeLeft).map(([unit, value]) => (
-                <div
-                  key={unit}
-                  className="bg-black/90 border-2 border-yellow-500/50 rounded-xl p-3 sm:p-6 text-center
-                            transform hover:scale-105 transition-all duration-300
-                            hover:border-orange-400/80 hover:shadow-[0_0_30px_rgba(255,165,0,0.2)]"
-                >
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-400">
-                    {value}
-                  </div>
-                  <div className="text-xs sm:text-sm text-white/90 capitalize mt-1 sm:mt-2">
-                    {unit}
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="space-y-8">
+          {/* Title and Description */}
+          <div>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-yellow-300 via-orange-300 to-yellow-300
+                          bg-clip-text text-transparent mb-2 sm:mb-4">
+              {projects[0].name}
+            </h3>
+            <p className="text-base sm:text-lg text-white/90">
+              {projects[0].description}
+            </p>
           </div>
 
-          <div className="relative group mt-6 md:mt-0">
+          {/* Countdown Timer */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
+            {Object.entries(timeLeft).map(([unit, value]) => (
+              <div
+                key={unit}
+                className="bg-black/90 border-2 border-yellow-500/50 rounded-xl p-3 sm:p-6 text-center
+                          transform hover:scale-105 transition-all duration-300
+                          hover:border-orange-400/80 hover:shadow-[0_0_30px_rgba(255,165,0,0.2)]"
+              >
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-yellow-400">
+                  {value}
+                </div>
+                <div className="text-xs sm:text-sm text-white/90 capitalize mt-1 sm:mt-2">
+                  {unit}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Rocket Image */}
+          <div className="relative group w-full mt-8">
             <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/50 to-orange-500/50 
                           rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-500" />
             <img
               src={projects[0].image}
               alt={projects[0].name}
-              className="relative rounded-xl w-full h-[200px] sm:h-[300px] lg:h-[400px] object-cover
-                        transform group-hover:scale-105 transition-transform duration-500"
+              className="relative w-full h-auto object-contain max-h-[600px] mx-auto
+                        transform group-hover:scale-105 transition-transform duration-500
+                        rounded-xl"
             />
           </div>
         </div>

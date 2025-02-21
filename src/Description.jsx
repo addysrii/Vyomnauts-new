@@ -5,12 +5,12 @@ const VerticalSpaceCards = () => {
   return (
     <div className="relative w-full min-h-screen py-20 px-4">
       {/* Animated stars background */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-1 h-1 bg-yellow-500 rounded-full animate-pulse" style={{top: '10%', left: '20%'}}/>
         <div className="absolute w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{top: '30%', left: '80%'}}/>
         <div className="absolute w-1 h-1 bg-yellow-500 rounded-full animate-pulse" style={{top: '70%', left: '40%'}}/>
-        <div className="absolute w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{top: '50%', left: '90%'}}/>
-      </div>
+        <div className="absolute w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{top: '50%', left: '90%'}}/> */}
+      {/* </div> */}
 
       <div className="max-w-7xl mx-auto space-y-12 relative">
         {/* Header Section */}

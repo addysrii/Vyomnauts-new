@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, X, Expand, Youtube } from 'lucide-react';
 import Navbar from './Navbar';
 import img from "./assets/projectmedia/bilkulreport.png";
-
+import p1 from "./assets/pojects/cansat231.jpg"
+import p2 from "./assets/pojects/cansat241.png"
+import p3 from "./assets/pojects/rocekt251.jpeg"
 const ProjectsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCarousel, setShowCarousel] = useState(false);
@@ -34,7 +36,7 @@ const ProjectsSlider = () => {
       { title: "Project Achievement", url: "https://youtu.be/o-clHa2XTLk?si=xZO2vwdK75DAqti6" },
       { title: "Recognition by DD gujrati", url: "https://www.youtube.com/live/AUc1juXQ5n0?si=38cB3ZWCywiZj-aP" },
     ],
-    video: `https://res.cloudinary.com/dnnl72vrp/video/upload/v1738687190/atomic2_fncio3.mp4`,
+   image : p1
   },
   {
     title: 'CanSat 2024-25',
@@ -42,8 +44,17 @@ const ProjectsSlider = () => {
     status: 'Ongoing',
     mediaLinks: [],
     youtubeLinks: [],
-    video: "https://res.cloudinary.com/dnnl72vrp/video/upload/v1738687190/atomic2_fncio3.mp4",
-  }];
+    image : p2
+  },
+  {
+    title: 'Rocketry 2024-25',
+    description: "The thrill of rocketry is set to soar as PSIT Vyomnauts gears up for Rocketry 2024-25, organized by IN-SPACe and ISRO, with Team Sudarshan and its cutting-edge rocket, Trishul. A symbol of innovation, precision, and engineering excellence, Trishul represents our dedication to advancing rocketry technology. Competing in India’s first-ever rocketry competition, our team has successfully qualified two rounds and is now preparing for the Mission Readiness Review (MRR). With rigorous testing and refinement, we aim to push the boundaries of propulsion, aerodynamics, and advanced rocket design, making history with every launch.",
+    status: 'Ongoing',
+    mediaLinks: [],
+    youtubeLinks: [],
+    image : p3
+  }
+];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
@@ -52,35 +63,30 @@ const ProjectsSlider = () => {
       <div className="container mx-auto px-4 py-16 space-y-24">
         {projects.map((project, index) => (
           <div key={index} className="space-y-12">
-            {/* Project Header and Main Content */}
+            {/* Project Header at top */}
+            <div className="text-center space-y-4">
+              <span className={`px-3 py-1 text-sm rounded-full inline-block ${
+                project.status === 'Completed' ? 'bg-[#FFD700]/20 text-[#FFD700]' : 'bg-blue-500/20 text-blue-400'
+              }`}>
+                {project.status}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-300">
+                {project.title}
+              </h2>
+            </div>
+
+            {/* Video and Description in parallel */}
             <div className="grid md:grid-cols-2 gap-8 items-start">
               {/* Video Section */}
-              {project.video && (
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-                  <video
-                    src={project.video}
-                    controls
-                    autoPlay
-                    muted
-                    loop
-                    className="w-full h-full object-cover"
-                  />
+              {project.image && (
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-white">
+                    <img src={project.image} alt="" className='w-full h-full object-cover' />
                 </div>
               )}
               
               {/* Description Section */}
-              <div className="space-y-6">
-                <div className="space-y-4">
-                  <span className={`px-3 py-1 text-sm rounded-full ${
-                    project.status === 'Completed' ? 'bg-[#FFD700]/20 text-[#FFD700]' : 'bg-blue-500/20 text-blue-400'
-                  }`}>
-                    {project.status}
-                  </span>
-                  <h2 className="text-3xl md:text-4xl font-bold text-blue-300">
-                    {project.title}
-                  </h2>
-                </div>
-                <p className="text-gray-300 leading-relaxed">
+              <div className="space-y-4">
+                <p className="text-gray-300 leading-relaxed text-xl">
                   {project.description}
                 </p>
               </div>
