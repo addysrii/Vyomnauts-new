@@ -6,6 +6,7 @@ import img from "./assets/projectmedia/bilkulreport.png";
 import p1 from "./assets/pojects/cansat231.jpg"
 import p2 from "./assets/pojects/cansat241.png"
 import p3 from "./assets/pojects/rocekt251.jpeg"
+import BgVideoScroll from './BigVideoScroll';
 const ProjectsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCarousel, setShowCarousel] = useState(false);
@@ -57,10 +58,11 @@ const ProjectsSlider = () => {
 ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
-      <Navbar />
-      
-      <div className="container mx-auto px-4 py-16 space-y-24">
+    <div className="relative min-h-screen">
+      <BgVideoScroll />
+      <div className="relative z-10"> {/* This wrapper ensures content stays above video */}
+        <Navbar />
+        <div className="container mx-auto px-4 py-16 space-y-24"></div>
         {projects.map((project, index) => (
           <div key={index} className="space-y-12">
             {/* Project Header at top */}
@@ -76,16 +78,16 @@ const ProjectsSlider = () => {
             </div>
 
             {/* Video and Description in parallel */}
-            <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="grid md:grid-cols-2 gap-8 items-start bg-black/30 rounded-lg overflow-hidden border border-[#FFD700]/20 mx-4">
               {/* Video Section */}
               {project.image && (
-                <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-white">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-blue-100 my-2 mx-1">
                     <img src={project.image} alt="" className='w-full h-full object-cover' />
                 </div>
               )}
               
               {/* Description Section */}
-              <div className="space-y-4">
+              <div className="space-y-4 ">
                 <p className="text-gray-300 leading-relaxed text-xl">
                   {project.description}
                 </p>
